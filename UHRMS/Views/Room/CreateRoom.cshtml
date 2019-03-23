@@ -1,0 +1,41 @@
+﻿
+
+@model UHRMS.Models.Room
+
+
+@{
+    ViewBag.Title = "CreateRoom";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Room</h2>
+
+<form class="form-horizontal">
+    <div class="form-horizontal">
+
+        <label>Room Number</label>
+        @Html.TextBoxFor(m => m.roomId, new { @class = "form-control" })
+
+        <label>Dorm Number</label>
+        @Html.TextBoxFor(m => m.dormNumber, new { @class = "form-control" })
+
+
+        <label>Current Occupnacy</label>
+        @Html.TextBoxFor(m => m.currentOccupancy, new { @class = "form-control" })
+
+        <label>Max Occupnacy</label>
+        @Html.TextBoxFor(m => m.maxOccupancy, new { @class = "form-control" })
+
+
+        <label>Fee Number</label>
+        @Html.TextBoxFor(m => m.feeNo, new { @class = "form-control" })
+
+
+        <label>Room Description</label>
+        @Html.TextBoxFor(m => m.roomDescription, new { @class = "form-control" })
+
+
+    </div>
+
+    
+</form>

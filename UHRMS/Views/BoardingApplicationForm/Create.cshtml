@@ -1,0 +1,446 @@
+﻿
+@model UHRMS.Models.BoardingApplicationForm
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>UHRMS ONLINE APPLICATION FORM</h2>
+
+<br /> <br />
+<p>Section A: TO BE COMPLETED BY ALL APPLICANTS </p>
+<form class="form-inline">
+
+    <div class="form-group">
+
+        <label>First Name</label>
+        @Html.TextBoxFor(m => m.firstName, new { @class = "form-control" })
+
+        <label>Middle Initial</label>
+        @Html.TextBoxFor(m => m.fmiddleInitial, new { @class = "form-control" })
+
+
+        <label>Last Name</label>
+        @Html.TextBoxFor(m => m.lastName, new { @class = "form-control" })
+
+    </div>
+
+    <br> <br>
+
+    <div class="form-group">
+
+        <label>ID Number</label>
+        @Html.TextBoxFor(m => m.studentId, new { @class = "form-control" })
+
+
+        <label>Date Of Birth (MM/DD/YYYY)</label>
+        @Html.TextBoxFor(m => m.DOB, new { @class = "form-control" })
+
+    </div>
+
+    <br> <br>
+
+    <div class="form-group">
+
+        <label>Nationality</label>
+        @Html.TextBoxFor(m => m.nationality, new { @class = "form-control" })
+
+
+    </div>
+
+    <div class="form-group">
+
+        <label>Religion</label>
+        @Html.TextBoxFor(m => m.religion, new { @class = "form-control" })
+
+
+        <label>Denomination</label>
+        @Html.TextBoxFor(m => m.denomination, new { @class = "form-control" })
+
+    </div>
+
+
+    <br> <br>
+
+    <div class="form-group">
+
+        <label>Cell Number</label>
+        @Html.TextBoxFor(m => m.mobileTelephone, new { @class = "form-control" })
+
+
+        <label>Work Number</label>
+        @Html.TextBoxFor(m => m.workTelephone, new { @class = "form-control" })
+
+
+        <span> &nbsp; &nbsp; &nbsp;</span>
+
+        <label>Male</label>
+        @Html.RadioButtonFor(m => m.gender, "Male")
+
+
+        <label>Female</label>
+        @Html.RadioButtonFor(m => m.gender, "Female")
+
+    </div>
+
+
+
+
+    <br> <br>
+
+    <div class="form-group">
+
+        <label>e-mail</label>
+        &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+        @Html.TextBoxFor(m => m.email, new { @class = "form-control" })
+
+    </div>
+
+
+
+
+    <p> CONTACT INFORMATION</p>
+
+
+    <br><br>
+
+
+
+
+    <div class="form-group">
+
+        <label>P.O Box</label>
+        @Html.TextBoxFor(m => m.postOfficeBox, new { @class = "form-control" })
+
+        <label>Street</label>
+        @Html.TextBoxFor(m => m.street, new { @class = "form-control" })
+
+
+        <label>Parish</label>
+        @Html.TextBoxFor(m => m.parish, new { @class = "form-control" })
+
+
+        <label>Country</label>
+        @Html.TextBoxFor(m => m.country, new { @class = "form-control" })
+
+
+        <br><br>
+        <label>Mailing Address (If different from above)</label>
+        <br>
+    </div>
+
+    <br>
+
+    <div class="form-group">
+
+        <label>P.O Box</label>
+        @Html.TextBoxFor(m => m.mailingPostOfficeBox, new { @class = "form-control" })
+
+        <label>Street</label>
+        @Html.TextBoxFor(m => m.mailingStreet, new { @class = "form-control" })
+
+
+        <label>Parish</label>
+        @Html.TextBoxFor(m => m.mailingTown, new { @class = "form-control" })
+
+
+        <label>Country</label>
+        @Html.TextBoxFor(m => m.mailingCountry, new { @class = "form-control" })
+
+    </div>
+
+
+
+    <br>
+    <br>
+    <div class="form-group">
+
+        <br>
+        <label>Persons to contact in Case of Emergency (Next of Kin) </label>
+        <label>Name</label>
+        @Html.TextBoxFor(m => m.emergencyContactName1, new { @class = "form-control" })
+
+
+        <label>Relationship</label>
+        @Html.TextBoxFor(m => m.emergencyContactRelationship1, new { @class = "form-control" })
+
+
+        <label>Address</label>
+        @Html.TextBoxFor(m => m.emergencyContactAddress1, new { @class = "form-control" })
+
+
+        <label>Mobile</label>
+        @Html.TextBoxFor(m => m.emergencyContactMobileNumber1, new { @class = "form-control" })
+
+
+        <label>Work</label>
+        @Html.TextBoxFor(m => m.emergencyContactMWorkNumber1, new { @class = "form-control" })
+
+
+    </div>
+
+    <br>
+
+    <div class="form-group">
+
+
+        <label>Name</label>
+        @Html.TextBoxFor(m => m.emergencyContactName2, new { @class = "form-control" })
+
+
+        <label>Relationship</label>
+        @Html.TextBoxFor(m => m.emergencyContactRelationship2, new { @class = "form-control" })
+
+
+        <label>Address</label>
+        @Html.TextBoxFor(m => m.emergencyContactAddress2, new { @class = "form-control" })
+
+
+        <label>Mobile</label>
+        @Html.TextBoxFor(m => m.emergencyContactMobileNumber2, new { @class = "form-control" })
+
+
+        <label>Work</label>
+        @Html.TextBoxFor(m => m.emergencyContactMWorkNumber2, new { @class = "form-control" })
+
+
+    </div>
+
+    <br>
+    <br>
+
+    <p> MEDICAL INFORMATION</p>
+
+
+    <br>
+
+
+
+    <div class="form-group">
+
+        <label>Name of Family Doctor</label>&nbsp;
+        @Html.TextBoxFor(m => m.familyDoctorName, new { @class = "form-control" })
+
+
+    </div>
+    <br>
+
+    <div class="form-group">
+        <label>Contact Number</label> &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+        @Html.TextBoxFor(m => m.familyDoctorNumber, new { @class = "form-control" })
+    </div>
+    <br>
+
+    <div class="form-group">
+        <label>Known Medical Conditions</label> &nbsp;&nbsp; &nbsp;
+        @Html.TextBoxFor(m => m.medicalConditions, new { @class = "form-control" })
+    </div>
+    <br>
+
+    <div class="form-group">
+        <label>Special Needs</label>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+        @Html.TextBoxFor(m => m.specialNeeds, new { @class = "form-control" })
+
+    </div>
+
+
+    <p>ACADEMIC INFORMATION</p>
+
+
+    <label>State the faculty and programme to which you applied at UTech</label>
+    <br>
+    <br>
+
+    <div class="form-group">
+
+
+        <label>Faculty</label>
+        @Html.TextBoxFor(m => m.faculty, new { @class = "form-control" })
+
+        <label>School</label>
+        @Html.TextBoxFor(m => m.school, new { @class = "form-control" })
+
+
+    </div>
+    <br>
+    <div class="form-group">
+
+
+        <label>Programme</label>
+        @Html.TextBoxFor(m => m.programme, new { @class = "form-control" })
+
+
+    </div>
+
+
+    <div class="form-group">
+        <label>Full Time</label>
+        @Html.RadioButtonFor(m => m.programmeMode, "Full Time")
+
+
+        <label>Part Time</label>
+        @Html.RadioButtonFor(m => m.programmeMode, "Part Time")
+
+        <label>Summer Time</label>
+        @Html.RadioButtonFor(m => m.programmeMode, "Summer")
+    </div>
+
+    <br>
+
+    <div class="form-group">
+        <label>Year of Study</label>
+        @Html.TextBoxFor(m => m.yearOfStudy, new { @class = "form-control" })
+
+    </div>
+
+
+    <p>SECTION C: TO BE COMPLETED BY ALL APPLICANTS EXCEPT RETURNING RESIDENT STUDENTS</p>
+
+
+    <br>
+
+    <label>Please list extra-curricular activities you've been involved in at high school,community college, university and your community over the pass two years.</label>
+
+    <div class="form-group">
+        <label>1</label>
+        @Html.TextBoxFor(m => m.extraCurriculars1, new { @class = "form-control" })
+
+    </div>
+    <br>
+    <div class="form-group">
+        <label>2</label>
+        @Html.TextBoxFor(m => m.extraCurriculars2, new { @class = "form-control" })
+
+    </div>
+    <br>
+    <div class="form-group">
+        <label>3</label>
+        @Html.TextBoxFor(m => m.extraCurriculars3, new { @class = "form-control" })
+
+    </div>
+    <br>
+    <div class="form-group">
+        <label>4</label>
+        @Html.TextBoxFor(m => m.extraCurriculars4, new { @class = "form-control" })
+
+    </div>
+    <br>
+    <div class="form-group">
+        <label>5</label>
+        @Html.TextBoxFor(m => m.extraCurriculars5, new { @class = "form-control" })
+
+    </div>
+
+    <br>
+
+    <label>Please list your special skills,experiences and abilities.</label>
+
+
+    <br>
+
+    <div class="form-group">
+        <label>1</label>
+        @Html.TextBoxFor(m => m.skills1, new { @class = "form-control" })
+
+    </div>
+    <br>
+    <div class="form-group">
+        <label>2</label>
+        @Html.TextBoxFor(m => m.skills2, new { @class = "form-control" })
+
+    </div>
+    <br>
+    <div class="form-group">
+        <label>3</label>
+        @Html.TextBoxFor(m => m.skills3, new { @class = "form-control" })
+
+    </div>
+    <br>
+    <div class="form-group">
+        <label>4</label>
+        @Html.TextBoxFor(m => m.skills4, new { @class = "form-control" })
+
+    </div>
+    <br>
+    <div class="form-group">
+        <label>5</label>
+        @Html.TextBoxFor(m => m.skills5, new { @class = "form-control" })
+
+    </div>
+    <br>
+    <br>
+
+
+
+    <p>SECTION D: TO BE COMPLETED BY RETURNING STUDENTS ONLY</p>
+
+
+
+
+    <div class="form-group">
+        <label>Room Number</label>
+
+        @Html.TextBoxFor(m => m.roomNumber, new { @class = "form-control" })
+
+    </div>
+    <br>
+    <div class="form-group">
+        <label>List of Hall Committes you've served on</label>
+
+        @Html.TextBoxFor(m => m.hallCommiteesServed, new { @class = "form-control" })
+
+    </div>
+
+
+    <br>
+    <label>List of Hall Committes you've served on</label>
+    <div class="form-group">
+        <label>List of Hall Committes you've served on</label>
+        <br>
+        @Html.TextBoxFor(m => m.hallActivitiesInvolved, new { @class = "form-control" })
+
+    </div>
+    <br>
+
+
+    <label>Write a short paragraph outlining why you should be readmitted to the Hall</label>
+    <div class="form-group">
+
+        @Html.TextBoxFor(m => m.reasonOfApplication, new { @class = "form-control" })
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <p>SECTION E: TO BE COMPLETED BY SUMMER STUDENTS ONLY</p>
+    <br>
+
+    <div class="form-group">
+        <label>Please indicate the data you intend to start living on dorm</label>
+
+        @Html.TextBoxFor(m => m.expectedToStart, new { @class = "form-control" })
+
+    </div>
+
+    <br>
+
+    <div class="form-group">
+        <label>Please indicate your departure date</label>
+
+        @Html.TextBoxFor(m => m.expectedToDepart, new { @class = "form-control" })
+
+    </div>
+
+</form>

@@ -195,14 +195,70 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BoardingApplicationFormController.cs" />
+    <Compile Include="Controllers\DormController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
+    <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903110634425_InitialCreate.cs" />
+    <Compile Include="Migrations\201903110634425_InitialCreate.Designer.cs">
+      <DependentUpon>201903110634425_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903110646361_CreateStudentTable.cs" />
+    <Compile Include="Migrations\201903110646361_CreateStudentTable.Designer.cs">
+      <DependentUpon>201903110646361_CreateStudentTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903110705503_CreateDormTable.cs" />
+    <Compile Include="Migrations\201903110705503_CreateDormTable.Designer.cs">
+      <DependentUpon>201903110705503_CreateDormTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903110711076_CreateDormTable1.cs" />
+    <Compile Include="Migrations\201903110711076_CreateDormTable1.Designer.cs">
+      <DependentUpon>201903110711076_CreateDormTable1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903110717043_CreateRoomTable.cs" />
+    <Compile Include="Migrations\201903110717043_CreateRoomTable.Designer.cs">
+      <DependentUpon>201903110717043_CreateRoomTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903110722511_CreatePaymentTable.cs" />
+    <Compile Include="Migrations\201903110722511_CreatePaymentTable.Designer.cs">
+      <DependentUpon>201903110722511_CreatePaymentTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903110734434_CreateAccoStaffTable.cs" />
+    <Compile Include="Migrations\201903110734434_CreateAccoStaffTable.Designer.cs">
+      <DependentUpon>201903110734434_CreateAccoStaffTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903130051387_CreateApplicationForm.cs" />
+    <Compile Include="Migrations\201903130051387_CreateApplicationForm.Designer.cs">
+      <DependentUpon>201903130051387_CreateApplicationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903130259275_CreateApplicationForm1.cs" />
+    <Compile Include="Migrations\201903130259275_CreateApplicationForm1.Designer.cs">
+      <DependentUpon>201903130259275_CreateApplicationForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903130334249_CreateApplicationForm2.cs" />
+    <Compile Include="Migrations\201903130334249_CreateApplicationForm2.Designer.cs">
+      <DependentUpon>201903130334249_CreateApplicationForm2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903130339313_CreateApplicationForm3.cs" />
+    <Compile Include="Migrations\201903130339313_CreateApplicationForm3.Designer.cs">
+      <DependentUpon>201903130339313_CreateApplicationForm3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\BoardingApplicationForm.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Dorm.cs" />
+    <Compile Include="Models\Payment.cs" />
+    <Compile Include="Models\Room.cs" />
+    <Compile Include="Models\AccoStaff.cs" />
+    <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -265,9 +321,15 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Account\test.cshtml" />
+    <Content Include="Views\BoardingApplicationForm\Create.cshtml" />
+    <Content Include="Views\Room\CreateRoom.cshtml" />
+    <Content Include="Views\Payment\MakePayment.cshtml" />
+    <Content Include="Views\Dorm\CreateDorm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -281,6 +343,41 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201903110634425_InitialCreate.resx">
+      <DependentUpon>201903110634425_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903110646361_CreateStudentTable.resx">
+      <DependentUpon>201903110646361_CreateStudentTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903110705503_CreateDormTable.resx">
+      <DependentUpon>201903110705503_CreateDormTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903110711076_CreateDormTable1.resx">
+      <DependentUpon>201903110711076_CreateDormTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903110717043_CreateRoomTable.resx">
+      <DependentUpon>201903110717043_CreateRoomTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903110722511_CreatePaymentTable.resx">
+      <DependentUpon>201903110722511_CreatePaymentTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903110734434_CreateAccoStaffTable.resx">
+      <DependentUpon>201903110734434_CreateAccoStaffTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903130051387_CreateApplicationForm.resx">
+      <DependentUpon>201903130051387_CreateApplicationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903130259275_CreateApplicationForm1.resx">
+      <DependentUpon>201903130259275_CreateApplicationForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903130334249_CreateApplicationForm2.resx">
+      <DependentUpon>201903130334249_CreateApplicationForm2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903130339313_CreateApplicationForm3.resx">
+      <DependentUpon>201903130339313_CreateApplicationForm3.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
