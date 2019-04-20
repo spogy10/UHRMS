@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
+using Microsoft.Owin.Security;
 
 namespace UHRMS.Models
 {
@@ -14,6 +18,18 @@ namespace UHRMS.Models
         public ApplicationUser Applicant { get; set; }
 
         public string studentStatus { get; set; }
+
+        public string ApplicantType { get; set; }
+
+        public static IList<string> ApplicantTypeList = new List<string>()
+        {
+            "New Student",
+            "Returning Resident Student",
+            "Returning Non-Resident Student",
+            "Community College Transfer",
+            "Inter Department/Faculty Transfer Student"
+        };
+
         public string title { get; set; }
         public string firstName { get; set; }
 
@@ -110,7 +126,9 @@ namespace UHRMS.Models
 
         public string programmeMode { get; set; }
 
-        public string yearOfStudy { get; set; }
+        public int yearOfStudy { get; set; }
+
+        public string BoardingPeriod { get; set; }
 
         public string licensePeriod { get; set; }
 
@@ -138,19 +156,30 @@ namespace UHRMS.Models
 
         public string guardianOccupation { get; set; }
 
-        public string familyBirthPosition { get; set; }
+        public int familyBirthPosition { get; set; }
 
-        public string numberOfDependants { get; set; }
+        public int NumberOfSiblings { get; set; }
+
+        public int numberOfDependants { get; set; }
+
+        public bool isFatherFinacing { get; set; }
+
+        public bool isMotherFinacing { get; set; }
+
+        public bool areYouFinancing { get; set; }
 
         public string financeer { get; set; }
 
-        public string slbQuestion { get; set; }
+        public bool slbQuestion { get; set; }
 
+        public bool requestedSponsorship { get; set; }
+
+        public bool requestedGrant { get; set; }
 
         public string scholarshipsGranted { get; set; }
 
 
-        public string scholarshipsGrantedAmount { get; set; }
+        //public string scholarshipsGrantedAmount { get; set; }
 
 
         //EXTRA CURRICULAR ACTIVITIES ONLY NEW APPLICANTS
@@ -186,6 +215,18 @@ namespace UHRMS.Models
 
         public string skills5 { get; set; }
 
+        //ATTRIBUTES
+        public string attributes1 { get; set; }
+
+        public string attributes2 { get; set; }
+
+        public string attributes3 { get; set; }
+
+        public string attributes4 { get; set; }
+
+        public string attributes5 { get; set; }
+
+
 
         public string reasonOfApplication { get; set; }
 
@@ -214,15 +255,9 @@ namespace UHRMS.Models
 
         //SECTION E
 
-        public string expectedToStart { get; set; }
+        public DateTime expectedToStart { get; set; }
 
-        public string expectedToDepart { get; set; }
-
-
-
-
-
-
+        public DateTime expectedToDepart { get; set; }
 
 
     }
