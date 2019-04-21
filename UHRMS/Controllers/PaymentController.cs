@@ -2,6 +2,8 @@
 
 namespace UHRMS.Controllers
 {
+
+    [Authorize]
     public class PaymentController : Controller
     {
         // GET: Payment

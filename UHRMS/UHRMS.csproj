@@ -248,6 +248,18 @@
     <Compile Include="Migrations\201903130339313_CreateApplicationForm3.Designer.cs">
       <DependentUpon>201903130339313_CreateApplicationForm3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904210658157_BoardingForm.cs" />
+    <Compile Include="Migrations\201904210658157_BoardingForm.Designer.cs">
+      <DependentUpon>201904210658157_BoardingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904210714049_modify_Student_Table.cs" />
+    <Compile Include="Migrations\201904210714049_modify_Student_Table.Designer.cs">
+      <DependentUpon>201904210714049_modify_Student_Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904211503132_21-4.cs" />
+    <Compile Include="Migrations\201904211503132_21-4.Designer.cs">
+      <DependentUpon>201904211503132_21-4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -377,6 +389,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903130339313_CreateApplicationForm3.resx">
       <DependentUpon>201903130339313_CreateApplicationForm3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904210658157_BoardingForm.resx">
+      <DependentUpon>201904210658157_BoardingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904210714049_modify_Student_Table.resx">
+      <DependentUpon>201904210714049_modify_Student_Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904211503132_21-4.resx">
+      <DependentUpon>201904211503132_21-4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

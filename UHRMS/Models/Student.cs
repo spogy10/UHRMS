@@ -1,10 +1,15 @@
-﻿namespace UHRMS.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace UHRMS.Models
 {
     public class Student
     {
-        public int studentId { get; set; }
+        [Key]
+        public string studentId { get; set; }
 
-        public ApplicationUser Applicant { get; set; }
+        public virtual ApplicationUser Applicant { get; set; }
+
         public string firstName { get; set; }
 
         public string lastName { get; set; }
@@ -29,6 +34,9 @@
         public string emergencyContactName2 { get; set; }
         public string emergencyContactNumber2 { get; set; }
         public string emergencyContactAddress2 { get; set; }
+
+
+        public virtual BoardingApplicationForm BoardingApplicationForm { get; set; }
 
 
 

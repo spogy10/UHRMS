@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Web.Mvc;
 using Microsoft.Owin.Security;
 
@@ -13,12 +14,16 @@ namespace UHRMS.Models
         //SECTION A
         //PERSONAL DETAILS
 
-        public int Id { get; set; }
+        [Required]
+        [Key]
+        [ForeignKey("Student")]
+        public string studentId { get; set; }
 
-        public ApplicationUser Applicant { get; set; }
+        public virtual ApplicationUser Applicant { get; set; }
 
         public string studentStatus { get; set; }
 
+        [Required]
         public string ApplicantType { get; set; }
 
         public static IList<string> ApplicantTypeList = new List<string>()
@@ -31,19 +36,26 @@ namespace UHRMS.Models
         };
 
         public string title { get; set; }
+
+        [Required]
         public string firstName { get; set; }
 
+        [Required]
         public string fmiddleInitial { get; set; }
 
 
+        [Required]
         public string lastName { get; set; }
 
+        [Required]
         public string gender { get; set; }
 
 
+        [Required]
         public DateTime DOB { get; set; }
 
 
+        [Required]
         public string nationality { get; set; }
 
         public string religion { get; set; }
@@ -57,6 +69,7 @@ namespace UHRMS.Models
         public int workTelephone { get; set; }
 
 
+        [Required]
         public string email { get; set; }
 
 
@@ -117,24 +130,29 @@ namespace UHRMS.Models
 
         //ACADEMIC INFORMATION
 
+        [Required]
         public string faculty { get; set; }
+
+        [Required]
         public string school { get; set; }
-        public Student studentId { get; set; }
 
 
+        [Required]
         public string programme { get; set; }
 
+        [Required]
         public string programmeMode { get; set; }
 
+        [Required]
         public int yearOfStudy { get; set; }
 
+        [Required]
         public string BoardingPeriod { get; set; }
 
         public string licensePeriod { get; set; }
 
+        [Required]
         public string hallPreference { get; set; }
-
-        public string hallPreferencQuestion { get; set; }
 
 
         public string vehicleType { get; set; }
@@ -228,6 +246,7 @@ namespace UHRMS.Models
 
 
 
+        [Required]
         public string reasonOfApplication { get; set; }
 
 
@@ -235,7 +254,7 @@ namespace UHRMS.Models
         //RETURNING STUDENTS ONLY
 
         //SECTION D
-
+        
         public string hallBlock { get; set; }
 
         public int roomNumber { get; set; }
@@ -258,6 +277,8 @@ namespace UHRMS.Models
         public DateTime expectedToStart { get; set; }
 
         public DateTime expectedToDepart { get; set; }
+
+        public virtual Student Student { get; set; }
 
 
     }

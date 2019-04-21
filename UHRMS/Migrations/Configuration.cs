@@ -10,7 +10,6 @@ namespace UHRMS.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "UHRMS.Models.ApplicationDbContext";
         }
 
         protected override void Seed(UHRMS.Models.ApplicationDbContext context)
