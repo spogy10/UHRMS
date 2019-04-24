@@ -9,28 +9,34 @@
 <h2>Add Dorm</h2>
 
 <form class="form-horizontal">
-<div class="form-horizontal">
+    <div class="form-horizontal">
 
-    <label>Dorm Number</label>
-    @Html.TextBoxFor(m => m.dormId, new { @class = "form-control" })
+        <label>Dorm Number</label>
+        @Html.TextBoxFor(m => m.dormId, new { @class = "form-control" })
 
-    <label>Number of Rooms</label>
-    @Html.TextBoxFor(m => m.numberOfRooms, new { @class = "form-control" })
-
-
-    <label>Number of Bathhrooms</label>
-    @Html.TextBoxFor(m => m.numberOfBathrooms, new { @class = "form-control" })
-
-    <label>Dorm Details</label>
-    @Html.TextBoxFor(m => m.dormDetails, new { @class = "form-control" })
+        <label>Number of Rooms</label>
+        @Html.TextBoxFor(m => m.numberOfRooms, new { @class = "form-control" })
 
 
-    <label>Dorm Type</label>
-    @Html.TextBoxFor(m => m.dormtype, new { @class = "form-control" })
+        <label>Number of Bathhrooms</label>
+        @Html.TextBoxFor(m => m.numberOfBathrooms, new { @class = "form-control" })
+
+        <label>Dorm Details</label>
+        @Html.TextBoxFor(m => m.dormDetails, new { @class = "form-control" })
 
 
-    
-</div>
+        <label>Dorm Type</label>
+        @Html.TextBoxFor(m => m.dormtype, new { @class = "form-control" })
 
+
+
+    </div>
+    <br>
+    <br>
+    <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+
+    </div>
 
 </form>

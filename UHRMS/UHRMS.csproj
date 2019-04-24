@@ -196,6 +196,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BoardingApplicationFormController.cs" />
+    <Compile Include="Controllers\ComplaintsController.cs" />
     <Compile Include="Controllers\DormController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -265,6 +266,7 @@
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\BoardingApplicationForm.cs" />
+    <Compile Include="Models\Complaints.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Dorm.cs" />
     <Compile Include="Models\Payment.cs" />
@@ -342,6 +344,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
+    <Folder Include="Views\Complaints\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
