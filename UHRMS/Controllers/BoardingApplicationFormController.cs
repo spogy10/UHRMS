@@ -35,11 +35,12 @@ namespace UHRMS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(BoardingApplicationForm form)
         {
-            //todo:add form to database
-            string id = User.Identity.GetUserId();
-            Student student = _context.Students.FirstOrDefault(x => x.studentId == id);
             if (ModelState.IsValid)
             {
+                //todo:add form to database
+                string id = User.Identity.GetUserId();
+                Student student = _context.Students.FirstOrDefault(x => x.studentId == id);
+                BoardingApplicationForm DatabaseForm = _context.BoardingForms.FirstOrDefault(x => x.studentId == id);
                 student.firstName = form.firstName;
                 student.lastName = form.lastName;
                 student.gender = form.gender;
@@ -56,17 +57,42 @@ namespace UHRMS.Controllers
                 student.emergencyContactNumber2 = form.emergencyContactMobileNumber2;
 
                 form.FormComplete = true;
+            
+
+                form.studentId = id;
+                form.Student = student;
+                DatabaseForm = form;
+                _context.BoardingForms.Add(DatabaseForm);
+
+                student.BoardingApplicationForm = DatabaseForm;
+
+                _context.SaveChanges();
             }
 
+
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Save(BoardingApplicationForm form)
+        {
+            //todo:add form to database
+            string id = User.Identity.GetUserId();
+            Student student = _context.Students.FirstOrDefault(x => x.studentId == id);
+            BoardingApplicationForm DatabaseForm = _context.BoardingForms.FirstOrDefault(x => x.studentId == id);
+            form.FormComplete = false;
             form.studentId = id;
             form.Student = student;
-            _context.BoardingForms.Add(form);
+            DatabaseForm = form;
+            _context.BoardingForms.Add(DatabaseForm);
 
-            student.BoardingApplicationForm = form;
+            student.BoardingApplicationForm = DatabaseForm;
 
             _context.SaveChanges();
 
-            
+
 
             return RedirectToAction("Index", "Home");
         }

@@ -10,11 +10,13 @@
 
 <h1>UHRMS ONLINE APPLICATION FORM</h1>
 <br />
-<p>Clicking the Apply button at the bottom of the page will also save the form so you may come back to it later</p>
+<p>Clicking the Save button will save the form so you may come back to it later</p>
 <br/>
 <p>NB. Only Completed Forms will be processed</p>
 
 <br /> <br />
+<button class="btn btn-success" onclick="save();">Save</button>
+<br/>
 
 <ul class="nav nav-tabs" id="nav">
     <li><a href="#section-a" data-toggle="tab">Section A</a></li>
@@ -25,7 +27,7 @@
 </ul>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "BoardingApplicationForm", FormMethod.Post, new {@id = "boardingForm"}))
 {
     @Html.AntiForgeryToken()
     <div class="tab-content">
@@ -37,20 +39,20 @@
             <div class="form-group">
 
                 <label>Applicant Type</label>
-                @Html.DropDownListFor(m => m.ApplicantType, new SelectList(BoardingApplicationForm.ApplicantTypeList), new { @class = "form-control" })
+                @Html.DropDownListFor(m => m.ApplicantType, new SelectList(BoardingApplicationForm.ApplicantTypeList), new { @class = "form-control", @required = "true" })
 
                 <label>Title</label>
                 @Html.TextBoxFor(m => m.title, new { @class = "form-control" })
 
                 <label>First Name</label>
-                @Html.TextBoxFor(m => m.firstName, new { @class = "form-control" })
+                @Html.TextBoxFor(m => m.firstName, new { @class = "form-control", @required = "true"  })
 
                 <label>Middle Initial</label>
-                @Html.TextBoxFor(m => m.fmiddleInitial, new { @class = "form-control" })
+                @Html.TextBoxFor(m => m.fmiddleInitial, new { @class = "form-control", @required = "true" })
 
 
                 <label>Last Name</label>
-                @Html.TextBoxFor(m => m.lastName, new { @class = "form-control" })
+                @Html.TextBoxFor(m => m.lastName, new { @class = "form-control", @required = "true" })
 
             </div>
 
@@ -63,7 +65,7 @@
 
 
                 <label>Date Of Birth (MM/DD/YYYY)</label>
-                @Html.TextBoxFor(m => m.DOB, new { @class = "form-control", @type = "date" })
+                @Html.TextBoxFor(m => m.DOB, new { @class = "form-control", @type = "date", @required = "true" })
 
             </div>
 
@@ -72,7 +74,7 @@
             <div class="form-group">
 
                 <label>Nationality</label>
-                @Html.TextBoxFor(m => m.nationality, new { @class = "form-control" })
+                @Html.TextBoxFor(m => m.nationality, new { @class = "form-control", @required = "true" })
 
 
             </div>
@@ -104,7 +106,7 @@
                 <span> &nbsp; &nbsp; &nbsp;</span>
 
                 <label>Male</label>
-                @Html.RadioButtonFor(m => m.gender, "Male")
+                @Html.RadioButtonFor(m => m.gender, "Male", new { @required = "true" })
 
 
                 <label>Female</label>
@@ -121,7 +123,7 @@
 
                 <label>E-mail</label>
                 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
-                @Html.TextBoxFor(m => m.email, new { @class = "form-control" })
+                @Html.TextBoxFor(m => m.email, new { @class = "form-control", @required = "true" })
 
             </div>
 
@@ -284,10 +286,10 @@
 
 
                 <label>Faculty</label>
-                @Html.TextBoxFor(m => m.faculty, new { @class = "form-control" })
+                @Html.TextBoxFor(m => m.faculty, new { @class = "form-control", @required = "true" })
 
                 <label>School</label>
-                @Html.TextBoxFor(m => m.school, new { @class = "form-control" })
+                @Html.TextBoxFor(m => m.school, new { @class = "form-control", @required = "true" })
 
 
             </div>
@@ -296,7 +298,7 @@
 
 
                 <label>Programme</label>
-                @Html.TextBoxFor(m => m.programme, new { @class = "form-control" })
+                @Html.TextBoxFor(m => m.programme, new { @class = "form-control", @required = "true" })
 
 
             </div>
@@ -304,7 +306,7 @@
 
             <div class="form-group">
                 <label>Full Time</label>
-                @Html.RadioButtonFor(m => m.programmeMode, "Full Time")
+                @Html.RadioButtonFor(m => m.programmeMode, "Full Time", new { @required = "true" })
                 <br />
 
 
@@ -321,7 +323,7 @@
 
             <div class="form-group">
                 <label>Year of Study</label>
-                @Html.TextBoxFor(m => m.yearOfStudy, new { @class = "form-control", @type = "number", @min = "1" })
+                @Html.TextBoxFor(m => m.yearOfStudy, new { @class = "form-control", @type = "number", @min = "1", @required = "true" })
 
             </div>
         </div>
@@ -334,7 +336,7 @@
             <div class="form-group">
                 <p>Please indicate the period for which you are requesting boarding (Please note that preference will be given to students requesting boarding for Semester 1 & 2):</p>
                 <br />
-                <label>Semester 1 (only) August – December:</label> @Html.RadioButtonFor(m => m.BoardingPeriod, "Sem1") <br />
+                <label>Semester 1 (only) August – December:</label> @Html.RadioButtonFor(m => m.BoardingPeriod, "Sem1", new { @required = "true" }) <br />
                 <label>Semester 2 (only) January – May:</label> @Html.RadioButtonFor(m => m.BoardingPeriod, "Sem2") <br />
                 <label>Semester 1 & 2 (August – May):</label> @Html.RadioButtonFor(m => m.BoardingPeriod, "Sem1&2") <br />
             </div>
@@ -363,7 +365,7 @@
                 <div class="row">
                     <div class="col-sm-4"><label>Unisex</label></div>
                     <div class="col-sm-4"></div>
-                    <div class="col-sm-4">Dennis Johnson: @Html.RadioButtonFor(m => m.hallPreference, "Dennis Johnson")</div>
+                    <div class="col-sm-4">Dennis Johnson: @Html.RadioButtonFor(m => m.hallPreference, "Dennis Johnson", new { @required = "true" })</div>
                 </div>
             </div>
 
@@ -558,7 +560,7 @@
             </div>
 
             <label>In not more than five (5) sentences, outline your reasons for boarding on campus apart from location and cost.</label>
-            @Html.TextAreaFor(m => m.reasonOfApplication, new { @class = "form-control" })
+            @Html.TextAreaFor(m => m.reasonOfApplication, new { @class = "form-control", @required = "true" })
 
         </div>
         <div class="tab-pane" id="section-d">
@@ -666,7 +668,7 @@
 
         @section scripts{
             <script type="text/javascript">
-                $('#nav a:first').tab('show')
+                $('#nav a:first').tab('show');
 
                 $('input[type=radio][name=gender]').on('change', function () {
                     switch ($(this).val()) {
@@ -694,6 +696,15 @@
                         $('#submit').prop('disabled', true);
                     }
                 });
+
+                function save() {
+                    alert("Form Saved");
+                    $('#boardingForm').find(':input').prop('required', false);
+                    $('#boardingForm').attr('action', '/BoardingApplicationForm/Save');
+                    $('#submit').prop('disabled', false);
+                    document.getElementById("submit").click();
+
+                }
             </script>
         }
 

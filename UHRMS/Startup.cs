@@ -66,6 +66,15 @@ namespace UHRMS
                 roleManager.Create(role);
 
             }
+
+            if (!roleManager.RoleExists("ApprovedApplicant"))
+            {
+                var role = new IdentityRole
+                {
+                    Name = "ApprovedApplicant"
+                };
+                roleManager.Create(role);
+            }
         }
     }
 }
