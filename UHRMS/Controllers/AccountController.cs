@@ -17,17 +17,18 @@ namespace UHRMS.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private readonly ApplicationDbContext context;
+        private readonly ApplicationDbContext _context;
 
         public AccountController()
         {
-            context = new ApplicationDbContext();
+            _context = new ApplicationDbContext();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            _context = new ApplicationDbContext();
         }
 
         public ApplicationSignInManager SignInManager
@@ -158,13 +159,14 @@ namespace UHRMS.Controllers
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    await UserManager.AddToRoleAsync(user.Id, "Student");
                     Student student = new Student()
                     {
                         studentId = model.UtechId,
-                        Applicant = context.Users.FirstOrDefault(x => x.Id == model.UtechId)
+                        Applicant = _context.Users.FirstOrDefault(x => x.Id == model.UtechId)
                     };
-                    context.Students.Add(student);
-                    context.SaveChanges();
+                    _context.Students.Add(student);
+                    _context.SaveChanges();
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link

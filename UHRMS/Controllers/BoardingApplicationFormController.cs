@@ -8,33 +8,38 @@ using UHRMS.Models;
 
 namespace UHRMS.Controllers
 {
+    [Authorize(Roles = "Student")]
     public class BoardingApplicationFormController : Controller
     {
-        private readonly ApplicationDbContext context;
+        private readonly ApplicationDbContext _context;
 
         public BoardingApplicationFormController()
         {
-            context = new ApplicationDbContext();
+            _context = new ApplicationDbContext();
         }
 
 
         // GET: BoardingApplicationForm
-        [Authorize]
         public ActionResult Create()
         {
+            string id = User.Identity.GetUserId();
+            BoardingApplicationForm form = _context.BoardingForms.FirstOrDefault(x => x.studentId == id);
+            if (form != null)
+            {
+                return View(form);
+            }
             return View();
         }
 
         [HttpPost]
-        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Create(BoardingApplicationForm form)
         {
             //todo:add form to database
+            string id = User.Identity.GetUserId();
+            Student student = _context.Students.FirstOrDefault(x => x.studentId == id);
             if (ModelState.IsValid)
             {
-                string id = User.Identity.GetUserId();
-                Student student = context.Students.FirstOrDefault(x => x.studentId == id);
                 student.firstName = form.firstName;
                 student.lastName = form.lastName;
                 student.gender = form.gender;
@@ -50,14 +55,16 @@ namespace UHRMS.Controllers
                 student.emergencyContactAddress2 = form.emergencyContactAddress2;
                 student.emergencyContactNumber2 = form.emergencyContactMobileNumber2;
 
-                form.studentId = id;
-                form.Student = student;
-                context.BoardingForms.Add(form);
-
-                student.BoardingApplicationForm = form;
-
-                context.SaveChanges();
+                form.FormComplete = true;
             }
+
+            form.studentId = id;
+            form.Student = student;
+            _context.BoardingForms.Add(form);
+
+            student.BoardingApplicationForm = form;
+
+            _context.SaveChanges();
 
             
 

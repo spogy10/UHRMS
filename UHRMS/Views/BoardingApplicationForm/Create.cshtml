@@ -9,6 +9,10 @@
 }
 
 <h1>UHRMS ONLINE APPLICATION FORM</h1>
+<br />
+<p>Clicking the Apply button at the bottom of the page will also save the form so you may come back to it later</p>
+<br/>
+<p>NB. Only Completed Forms will be processed</p>
 
 <br /> <br />
 
@@ -301,13 +305,16 @@
             <div class="form-group">
                 <label>Full Time</label>
                 @Html.RadioButtonFor(m => m.programmeMode, "Full Time")
+                <br />
 
 
                 <label>Part Time</label>
                 @Html.RadioButtonFor(m => m.programmeMode, "Part Time")
+                <br />
 
                 <label>Summer Time</label>
                 @Html.RadioButtonFor(m => m.programmeMode, "Summer")
+                <br />
             </div>
 
             <br />
@@ -621,13 +628,13 @@
             </div>
         </div>
     </div>
-        <div class="form-group">
-            <label>
-                I hereby certify that the information given above is true and declare that I will comply with the rules and regulations listed in both
-                the general Student and Resident Student Handbooks.
-            </label>
-            <input type="checkbox" id="accept" />
-        </div>
+    <div class="form-group">
+        <input type="checkbox" id="accept" />
+        <label>
+            I hereby certify that the information given above is true and declare that I will comply with the rules and regulations listed in both
+            the general Student and Resident Student Handbooks.
+        </label>
+    </div>
 
         <p>
             NOTES

@@ -261,6 +261,22 @@
     <Compile Include="Migrations\201904211503132_21-4.Designer.cs">
       <DependentUpon>201904211503132_21-4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904242008210_Identity.cs" />
+    <Compile Include="Migrations\201904242008210_Identity.Designer.cs">
+      <DependentUpon>201904242008210_Identity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904250236463_Removed_RequiredFilter_From_BoardingForm.cs" />
+    <Compile Include="Migrations\201904250236463_Removed_RequiredFilter_From_BoardingForm.Designer.cs">
+      <DependentUpon>201904250236463_Removed_RequiredFilter_From_BoardingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904250246421_BoardingForm1.cs" />
+    <Compile Include="Migrations\201904250246421_BoardingForm1.Designer.cs">
+      <DependentUpon>201904250246421_BoardingForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904250250477_BoardingForm_Complete_Attribute.cs" />
+    <Compile Include="Migrations\201904250250477_BoardingForm_Complete_Attribute.Designer.cs">
+      <DependentUpon>201904250250477_BoardingForm_Complete_Attribute.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -401,6 +417,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904211503132_21-4.resx">
       <DependentUpon>201904211503132_21-4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904242008210_Identity.resx">
+      <DependentUpon>201904242008210_Identity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904250236463_Removed_RequiredFilter_From_BoardingForm.resx">
+      <DependentUpon>201904250236463_Removed_RequiredFilter_From_BoardingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904250246421_BoardingForm1.resx">
+      <DependentUpon>201904250246421_BoardingForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904250250477_BoardingForm_Complete_Attribute.resx">
+      <DependentUpon>201904250250477_BoardingForm_Complete_Attribute.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

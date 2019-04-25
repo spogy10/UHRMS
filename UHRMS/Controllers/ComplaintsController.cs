@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace UHRMS.Controllers
 {
+    [Authorize]
     public class ComplaintsController : Controller
     {
         // GET: Complaints

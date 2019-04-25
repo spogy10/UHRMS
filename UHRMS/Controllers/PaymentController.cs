@@ -3,7 +3,7 @@
 namespace UHRMS.Controllers
 {
 
-    [Authorize]
+    [Authorize(Roles = "Student")]
     public class PaymentController : Controller
     {
         // GET: Payment
