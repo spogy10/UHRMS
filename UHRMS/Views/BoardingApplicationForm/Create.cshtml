@@ -10,13 +10,13 @@
 
 <h1>UHRMS ONLINE APPLICATION FORM</h1>
 <br />
-<p>Clicking the Save button will save the form so you may come back to it later</p>
+<p>Clicking the Save button will save the form so you may come back to it later. Once the submit button is pressed, you will no longer beable to edit the form.</p>
 <br/>
 <p>NB. Only Completed Forms will be processed</p>
 
-<br /> <br />
+<br />
 <button class="btn btn-success" onclick="save();">Save</button>
-<br/>
+<br/> <br />
 
 <ul class="nav nav-tabs" id="nav">
     <li><a href="#section-a" data-toggle="tab">Section A</a></li>
@@ -662,11 +662,12 @@
             </ol>
         </p>
         <div class="form-group">
-            <input type="submit" disabled value="Apply" id="submit" class="btn btn-primary" />
+            <input type="submit" disabled value="Submit" id="submit" class="btn btn-primary" />
         </div>
         }
 
-        @section scripts{
+@section scripts
+{
             <script type="text/javascript">
                 $('#nav a:first').tab('show');
 

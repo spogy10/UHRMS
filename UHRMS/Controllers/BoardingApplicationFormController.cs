@@ -26,7 +26,14 @@ namespace UHRMS.Controllers
             BoardingApplicationForm form = _context.BoardingForms.FirstOrDefault(x => x.studentId == id);
             if (form != null)
             {
-                return View(form);
+                if (form.FormComplete)
+                {
+                    return RedirectToAction("Applied", "BoardingApplicationForm");
+                }
+                else
+                {
+                    return View(form);
+                }
             }
             return View();
         }
@@ -95,6 +102,20 @@ namespace UHRMS.Controllers
 
 
             return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult Applied()
+        {
+            string id = User.Identity.GetUserId();
+            BoardingApplicationForm form = _context.BoardingForms.FirstOrDefault(x => x.studentId == id);
+            if (form != null)
+            {
+                if (form.FormComplete)
+                {
+                    return View();
+                }
+            }
+            return RedirectToAction("Create", "BoardingApplicationForm");
         }
 
     }

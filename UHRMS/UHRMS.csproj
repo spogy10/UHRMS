@@ -195,6 +195,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BoardingApplicationFormController.cs" />
     <Compile Include="Controllers\ComplaintsController.cs" />
     <Compile Include="Controllers\DormController.cs" />
@@ -279,6 +280,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdminViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\BoardingApplicationForm.cs" />
@@ -356,6 +358,8 @@
     <Content Include="Views\Room\CreateRoom.cshtml" />
     <Content Include="Views\Payment\MakePayment.cshtml" />
     <Content Include="Views\Dorm\CreateDorm.cshtml" />
+    <Content Include="Views\BoardingApplicationForm\Applied.cshtml" />
+    <Content Include="Views\Admin\ManageUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

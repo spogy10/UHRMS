@@ -1,0 +1,79 @@
+﻿@using UHRMS.Models
+@model IEnumerable<ManageUserViewModel>
+
+@{
+    ViewBag.Title = "Manage User";
+    
+
+
+    var emailList = (from p in Model select p).Select(p =>
+    new SelectListItem
+    {
+        Selected = false,
+        Text = p.Email,
+        Value = p.ID
+    }
+    );
+}
+
+<h2>Maintain Users and Roles</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col"> User ID</th>
+            <th scope="col">Email</th>
+            <th scope="col">Roles</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ int i = 0; }
+        @foreach (var user in Model)
+        {
+
+            <tr>
+                <td id="tdID-@i">@user.ID</td>
+                <td id="tdEmail-@i">@user.Email</td>
+                <td id="tdRoles-@i">@string.Join(", ", user.Roles)</td>
+                <td><button id="select-" class="btn btn-primary" onclick="selectUser(@i);">Select</button></td>
+            </tr>
+            i++;
+        }
+
+    </tbody>
+</table>
+
+<h2>Add Roles to User</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label>Select a User</label>
+        @Html.DropDownList("Email", emailList, new { @class = "form-control", @required = "true", @id="ddlEmail" })
+
+        <label>Add one or more roles:</label>
+        @Html.ListBox("Roles", (MultiSelectList)ViewBag.Roles, new { @class = "form-control", @id="ddlRoles" })
+        
+        <input type="hidden" id="CurrentRoles" Name="CurrentRoles" Value=""/>
+
+        <input type="submit" value="Add Roles" id="submit" class="btn btn-primary" />
+    </div>
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        function selectUser(i) {
+            var userID = $("#tdID-" + i).html();
+            
+            $("#ddlEmail").val(userID);
+
+            var roles = $("#tdRoles-" + i).html();
+
+            $("#CurrentRoles").val(roles.split(", "));
+
+            $("#ddlRoles").val(roles.split(", ")).html();
+        }
+    </script>
+        
+}
