@@ -132,9 +132,26 @@ namespace UHRMS.Models
 
         //[Required]
         public string faculty { get; set; }
+        public static IList<string> FacultyList = new List<string>()
+        {
+            "College of Health Sciences (COHS)",
+            "College of Business and Management (COBAM)",
+            "Faculty of Engineering and Computing (FENC)",
+            "Faculty of Law (FOL)",
+            "Faculty of Science and Sport (FOSS)",
+            "Joint Colleges of Medicine, Oral Health & Veterinary Sciences"
+        };
 
         //[Required]
         public string school { get; set; }
+        public static IList<string> SchoolList = new List<string>()
+        {
+            "New Student",
+            "Returning Resident Student",
+            "Returning Non-Resident Student",
+            "Community College Transfer",
+            "Inter Department/Faculty Transfer Student"
+        };
 
 
         //[Required]

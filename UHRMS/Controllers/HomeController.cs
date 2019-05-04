@@ -26,5 +26,10 @@ namespace UHRMS.Controllers
 
             return View();
         }
+
+        public ActionResult FarquharsonHall()
+        {
+            return View();
+        }
     }
 }

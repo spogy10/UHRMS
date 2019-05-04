@@ -1,11 +1,14 @@
 ﻿
 @using System.Collections
+@using Microsoft.Ajax.Utilities
 @using UHRMS.Models
 @model UHRMS.Models.BoardingApplicationForm
 
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var date = DateTime.Now.AddYears(-16);
 }
 
 <h1>UHRMS ONLINE APPLICATION FORM</h1>
@@ -29,607 +32,626 @@
 
 @using (Html.BeginForm("Create", "BoardingApplicationForm", FormMethod.Post, new {@id = "boardingForm"}))
 {
+
     @Html.AntiForgeryToken()
     <div class="tab-content">
 
-        <div class="tab-pane" id="section-a">
-            <h3>SECTION A: TO BE COMPLETED BY ALL APPLICANTS </h3>
+
+    <div class="tab-pane" id="section-a">
+    <h3>SECTION A: TO BE COMPLETED BY ALL APPLICANTS </h3>
+    <br />
+
+    <div class="form-group row">
+
+        <div class="col-md-3">
+            <label>Applicant Type</label>
+            @Html.DropDownListFor(m => m.ApplicantType, new SelectList(BoardingApplicationForm.ApplicantTypeList), new { @class = "form-control", @required = "true" })
+        </div>
+
+        <div class="col-md-3">
+            <label>Title</label>
+            @Html.TextBoxFor(m => m.title, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-3">
+            <label>First Name</label>
+            @Html.TextBoxFor(m => m.firstName, new { @class = "form-control", @required = "true" })
+        </div>
+        <div class="col-md-3">
+            <label>Middle Initial</label>
+            @Html.TextBoxFor(m => m.fmiddleInitial, new { @class = "form-control", @required = "true" })
+        </div>
+
+        <div class="col-md-3">
+            <label>Last Name</label>
+            @Html.TextBoxFor(m => m.lastName, new { @class = "form-control", @required = "true" })
+
+        </div>
+
+        <div class="col-md-3">
+            <label>Utech ID Number</label>
+            @Html.TextBoxFor(m => m.studentId, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-3">
+            <label>Date Of Birth (MM/DD/YYYY)</label>
+            @Html.TextBoxFor(m => m.DOB, new { @class = "form-control", @max=@date.ToString("yyyy-MM-dd"), @type = "date", @required = "true" })
+        </div>
+
+        <div class="col-md-3">
+            <label>Nationality</label>
+            @Html.TextBoxFor(m => m.nationality, new { @class = "form-control", @required = "true" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-3">
+            <label>Religion</label>
+            @Html.TextBoxFor(m => m.religion, new { @class = "form-control" })
+        </div>
+
+
+        <div class="col-md-3">
+            <label>Denomination</label>
+            @Html.TextBoxFor(m => m.denomination, new { @class = "form-control" })
+        </div>
+
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-3">
+            <label>Cell Number</label>
+            @Html.TextBoxFor(m => m.mobileTelephone, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-3">
+            <label>Work Number</label>
+            @Html.TextBoxFor(m => m.workTelephone, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-3">
+            <label>E-mail</label>
+            @Html.TextBoxFor(m => m.email, new { @class = "form-control", @required = "true" })
+        </div>
+
+    </div>
+
+    <div class="form-group row">
+
+        <div class="col-md-3"></div>
+
+        <div class="col-md-3">
+            @Html.RadioButtonFor(m => m.gender, "Male", new { @required = "true" })
+            <label>Male</label>
+        </div>
+
+        <div class="col-md-3">
+            @Html.RadioButtonFor(m => m.gender, "Female")
+            <label>Female</label>
+        </div>
+
+        <div class="col-md-3"></div>
+    </div>
+
+    <div class="row">
+        <h4>CONTACT INFORMATION</h4>
+    </div>
+
+    <br /><br />
+
+
+    <div class="form-group row">
+
+        <div class="col-md-3">
+            <label>P.O Box</label>
+            @Html.TextBoxFor(m => m.postOfficeBox, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-3">
+            <label>Street</label>
+            @Html.TextBoxFor(m => m.street, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-3">
+            <label>Parish</label>
+            @Html.TextBoxFor(m => m.parish, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-3">
+            <label>Country</label>
+            @Html.TextBoxFor(m => m.country, new { @class = "form-control" })
+        </div>
+
+    </div>
+
+    <br /><br />
+    <label>Mailing Address (If different from above)</label>
+    <br />
+
+    <br />
+
+    <div class="form-group row">
+
+        <div class="col-md-3">
+            <label>P.O Box</label>
+            @Html.TextBoxFor(m => m.mailingPostOfficeBox, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-3">
+            <label>Street</label>
+            @Html.TextBoxFor(m => m.mailingStreet, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-3">
+            <label>Parish</label>
+            @Html.TextBoxFor(m => m.mailingTown, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-3">
+            <label>Country</label>
+            @Html.TextBoxFor(m => m.mailingCountry, new { @class = "form-control" })
+        </div>
+
+    </div>
+
+    <br />
+    <br />
+    <div class="form-group row">
+
+        <br />
+        <div class="row">
+            <label>Persons to contact in Case of Emergency (Next of Kin) </label>
+        </div>
+
+        <div class="col-md-4">
+            <label>Name</label>
+            @Html.TextBoxFor(m => m.emergencyContactName1, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-4">
+            <label>Relationship</label>
+            @Html.TextBoxFor(m => m.emergencyContactRelationship1, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-4">
+            <label>Address</label>
+            @Html.TextBoxFor(m => m.emergencyContactAddress1, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-4">
+            <label>Mobile</label>
+            @Html.TextBoxFor(m => m.emergencyContactMobileNumber1, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-4">
+            <label>Work</label>
+            @Html.TextBoxFor(m => m.emergencyContactMWorkNumber1, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <br />
+
+    <div class="form-group row">
+
+        <div class="col-md-4">
+            <label>Name</label>
+            @Html.TextBoxFor(m => m.emergencyContactName2, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-4">
+            <label>Relationship</label>
+            @Html.TextBoxFor(m => m.emergencyContactRelationship2, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-4">
+            <label>Address</label>
+            @Html.TextBoxFor(m => m.emergencyContactAddress2, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-4">
+            <label>Mobile</label>
+            @Html.TextBoxFor(m => m.emergencyContactMobileNumber2, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-4">
+            <label>Work</label>
+            @Html.TextBoxFor(m => m.emergencyContactMWorkNumber2, new { @class = "form-control" })
+        </div>
+
+    </div>
+
+    <br />
+    <br />
+
+    <div class="row">
+        <h4>MEDICAL INFORMATION</h4>
+    </div>
+
+
+    <br />
+
+
+
+    <div class="form-group row">
+        <div class="col-md-3">
+            <label>Name of Family Doctor</label>&nbsp;
+            @Html.TextBoxFor(m => m.familyDoctorName, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-3">
+            <label>Contact Number</label> &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+            @Html.TextBoxFor(m => m.familyDoctorNumber, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-3">
+            <label>Known Medical Conditions</label> &nbsp;&nbsp; &nbsp;
+            @Html.TextBoxFor(m => m.medicalConditions, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-3">
+            <label>Special Needs</label>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+            @Html.TextBoxFor(m => m.specialNeeds, new { @class = "form-control" })
+        </div>
+
+    </div>
+
+
+    <div class="row">
+        <h4>ACADEMIC INFORMATION</h4>
+    </div>
+
+
+    <label>State the faculty and programme to which you applied at UTech</label>
+    <br />
+    <br />
+
+    <div class="form-group row">
+
+        <div class="col-md-3">
+            <label>Faculty</label>
+            @Html.DropDownListFor(m => m.faculty, new SelectList(BoardingApplicationForm.FacultyList), new { @class = "form-control", @required = "true" })
+        </div>
+
+        <div class="col-md-3">
+            <label>School</label>
+            @Html.DropDownList("schoolDDL", new SelectList(new List<string>()), new { @class = "form-control"})
+            @Html.TextBoxFor(m => m.school, new {@type = "hidden"})
+        </div>
+
+        <div class="col-md-3">
+            <label>Programme</label>
+            @Html.TextBoxFor(m => m.programme, new { @class = "form-control", @required = "true" })
+        </div>
+
+        <div class="col-md-3">
+            <label>Year of Study</label>
+            @Html.TextBoxFor(m => m.yearOfStudy, new { @class = "form-control", @type = "number", @min = "1", @required = "true" })
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-4">
+            <label>Full Time</label>
+            @Html.RadioButtonFor(m => m.programmeMode, "Full Time", new { @required = "true" })
+        </div>
+
+        <div class="col-md-4">
+            <label>Part Time</label>
+            @Html.RadioButtonFor(m => m.programmeMode, "Part Time")
+        </div>
+
+        <div class="col-md-4">
+            <label>Summer Time</label>
+            @Html.RadioButtonFor(m => m.programmeMode, "Summer")
+        </div>
+                
+    </div>
+    </div>
+
+    <div class="tab-pane" id="section-b">
+        <h3>SECTION B: TO BE COMPLETED BY ALL APPLICANTS</h3>
+
+        <br/>
+
+        <div class="form-group">
+            <p>Please indicate the period for which you are requesting boarding (Please note that preference will be given to students requesting boarding for Semester 1 & 2):</p>
+            <br/>
+            <label>Semester 1 (only) August – December:</label> @Html.RadioButtonFor(m => m.BoardingPeriod, "Sem1", new {@required = "true"}) <br/>
+            <label>Semester 2 (only) January – May:</label> @Html.RadioButtonFor(m => m.BoardingPeriod, "Sem2") <br/>
+            <label>Semester 1 & 2 (August – May):</label> @Html.RadioButtonFor(m => m.BoardingPeriod, "Sem1&2") <br/>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4 center-block"><label>Double Occupancy</label></div>
+                <div class="col-sm-4"><label>Triple Occupancy</label></div>
+            </div>
+
+            <div id="male" class="row">
+                <div class="col-sm-4"><label>Male(Only)</label></div>
+                <div class="col-sm-2">Hall F: @Html.RadioButtonFor(m => m.hallPreference, "Hall F")</div>
+                <div class="col-sm-2">Hall E: @Html.RadioButtonFor(m => m.hallPreference, "Hall E")</div>
+                <div class="col-sm-4">Farquharson Hall: @Html.RadioButtonFor(m => m.hallPreference, "Farquharson Hall")</div>
+            </div>
+
+            <div id="female" class="row">
+                <div class="col-sm-4"><label>Female(Only)</label></div>
+                <div class="col-sm-2">Hall A: @Html.RadioButtonFor(m => m.hallPreference, "Hall A")</div>
+                <div class="col-sm-2">Hall B: @Html.RadioButtonFor(m => m.hallPreference, "Hall B")</div>
+                <div class="col-sm-4">Garvey Hall: @Html.RadioButtonFor(m => m.hallPreference, "Garvey Hall")</div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4"><label>Unisex</label></div>
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">Dennis Johnson: @Html.RadioButtonFor(m => m.hallPreference, "Dennis Johnson", new {@required = "true"})</div>
+            </div>
+        </div>
+
+        <br/>
+        <p>TO BE COMPLETED BY OWNERS OF MOTOR VEHICLES:</p>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-4">
+                    <label>Type</label>
+                    @Html.TextBoxFor(m => m.vehicleType, new {@class = "form-control"})
+                </div>
+
+                <div class="col-sm-4"></div>
+
+                <div class="col-sm-4">
+                    <label>Model</label>
+                    @Html.TextBoxFor(m => m.vehicleModel, new {@class = "form-control"})
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-sm-4">
+                    <label>Make</label>
+                    @Html.TextBoxFor(m => m.vehicleMake, new {@class = "form-control"})
+                </div>
+
+                <div class="col-sm-4"></div>
+
+                <div class="col-sm-4">
+                    <label>Registration No.</label>
+                    @Html.TextBoxFor(m => m.registrationNumber, new {@class = "form-control"})
+                </div>
+            </div>
+        </div>
+        <br/>
+        <br/>
+
+        <p>Financial Information:</p>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-4">
+                    <label>Mother's Occupation:</label>
+                    @Html.TextBoxFor(m => m.motherOccupation, new {@class = "form-control"})
+                </div>
+
+                <div class="col-sm-4"></div>
+
+                <div class="col-sm-4">
+                    <label>Father's Occupation:</label>
+                    @Html.TextBoxFor(m => m.fatherOccupation, new {@class = "form-control"})
+                </div>
+            </div>
+            <br/>
+            <label>Guardian's Occupation:</label>
+            @Html.TextBoxFor(m => m.guardianOccupation, new {@class = "form-control"})
+            <br/>
+            <p>What is your birth position in the family? @Html.TextBoxFor(m => m.familyBirthPosition, new {@type = "number"}) of @Html.TextBoxFor(m => m.NumberOfSiblings, new {@type = "number"}) No. of dependents under parents’/guardians’ care: @Html.TextBoxFor(m => m.numberOfDependants, new {@type = "number"})</p>
+            <br/>
+            <p>Who will finance you for the upcoming academic year? Tick as many as are relevant to you.</p>
+            <div class="col-sm-3">
+                <label>Father</label> @Html.CheckBoxFor(m => m.isFatherFinacing)
+            </div>
+            <div class="col-sm-3">
+                <label>Mother</label> @Html.CheckBoxFor(m => m.isMotherFinacing)
+            </div>
+            <div class="col-sm-3">
+                <label>Self</label> @Html.CheckBoxFor(m => m.areYouFinancing)
+            </div>
+            <div class="col-sm-3">
+                <label>Other(specify)</label> @Html.TextBoxFor(m => m.financeer)
+            </div>
             <br/>
 
-            <div class="form-group">
+            <label>Have you applied for Student Loan:</label> @Html.CheckBoxFor(m => m.slbQuestion)
+            <br/>
 
-                <label>Applicant Type</label>
-                @Html.DropDownListFor(m => m.ApplicantType, new SelectList(BoardingApplicationForm.ApplicantTypeList), new { @class = "form-control", @required = "true" })
+            <label>Have you requested(Check all that apply):</label> <label>Grant</label> @Html.CheckBoxFor(m => m.requestedGrant) <label>Sponsorship</label> @Html.CheckBoxFor(m => m.requestedSponsorship)
+            <br/>
 
-                <label>Title</label>
-                @Html.TextBoxFor(m => m.title, new { @class = "form-control" })
+            <label>If yes, please state the organization(s) and the amount:</label>
+            @Html.TextAreaFor(m => m.scholarshipsGranted, new {@class = "form-control"})
 
-                <label>First Name</label>
-                @Html.TextBoxFor(m => m.firstName, new { @class = "form-control", @required = "true"  })
-
-                <label>Middle Initial</label>
-                @Html.TextBoxFor(m => m.fmiddleInitial, new { @class = "form-control", @required = "true" })
-
-
-                <label>Last Name</label>
-                @Html.TextBoxFor(m => m.lastName, new { @class = "form-control", @required = "true" })
-
-            </div>
-
-            <br /> <br />
-
-            <div class="form-group">
-
-                <label>Utech ID Number</label>
-                @Html.TextBoxFor(m => m.studentId, new { @class = "form-control" })
-
-
-                <label>Date Of Birth (MM/DD/YYYY)</label>
-                @Html.TextBoxFor(m => m.DOB, new { @class = "form-control", @type = "date", @required = "true" })
-
-            </div>
-
-            <br /> <br />
-
-            <div class="form-group">
-
-                <label>Nationality</label>
-                @Html.TextBoxFor(m => m.nationality, new { @class = "form-control", @required = "true" })
-
-
-            </div>
-
-            <div class="form-group">
-
-                <label>Religion</label>
-                @Html.TextBoxFor(m => m.religion, new { @class = "form-control" })
-
-
-                <label>Denomination</label>
-                @Html.TextBoxFor(m => m.denomination, new { @class = "form-control" })
-
-            </div>
-
-
-            <br /> <br />
-
-            <div class="form-group">
-
-                <label>Cell Number</label>
-                @Html.TextBoxFor(m => m.mobileTelephone, new { @class = "form-control" })
-
-
-                <label>Work Number</label>
-                @Html.TextBoxFor(m => m.workTelephone, new { @class = "form-control" })
-
-
-                <span> &nbsp; &nbsp; &nbsp;</span>
-
-                <label>Male</label>
-                @Html.RadioButtonFor(m => m.gender, "Male", new { @required = "true" })
-
-
-                <label>Female</label>
-                @Html.RadioButtonFor(m => m.gender, "Female")
-
-            </div>
-
-
-
-
-            <br /> <br />
-
-            <div class="form-group">
-
-                <label>E-mail</label>
-                &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
-                @Html.TextBoxFor(m => m.email, new { @class = "form-control", @required = "true" })
-
-            </div>
-
-
-
-
-            <p> CONTACT INFORMATION</p>
-
-
-            <br /><br />
-
-
-
-
-            <div class="form-group">
-
-                <label>P.O Box</label>
-                @Html.TextBoxFor(m => m.postOfficeBox, new { @class = "form-control" })
-
-                <label>Street</label>
-                @Html.TextBoxFor(m => m.street, new { @class = "form-control" })
-
-
-                <label>Parish</label>
-                @Html.TextBoxFor(m => m.parish, new { @class = "form-control" })
-
-
-                <label>Country</label>
-                @Html.TextBoxFor(m => m.country, new { @class = "form-control" })
-
-
-                <br /><br />
-                <label>Mailing Address (If different from above)</label>
-                <br />
-            </div>
-
-            <br />
-
-            <div class="form-group">
-
-                <label>P.O Box</label>
-                @Html.TextBoxFor(m => m.mailingPostOfficeBox, new { @class = "form-control" })
-
-                <label>Street</label>
-                @Html.TextBoxFor(m => m.mailingStreet, new { @class = "form-control" })
-
-
-                <label>Parish</label>
-                @Html.TextBoxFor(m => m.mailingTown, new { @class = "form-control" })
-
-
-                <label>Country</label>
-                @Html.TextBoxFor(m => m.mailingCountry, new { @class = "form-control" })
-
-            </div>
-
-
-
-            <br />
-            <br />
-            <div class="form-group">
-
-                <br />
-                <label>Persons to contact in Case of Emergency (Next of Kin) </label>
-                <label>Name</label>
-                @Html.TextBoxFor(m => m.emergencyContactName1, new { @class = "form-control" })
-
-
-                <label>Relationship</label>
-                @Html.TextBoxFor(m => m.emergencyContactRelationship1, new { @class = "form-control" })
-
-
-                <label>Address</label>
-                @Html.TextBoxFor(m => m.emergencyContactAddress1, new { @class = "form-control" })
-
-
-                <label>Mobile</label>
-                @Html.TextBoxFor(m => m.emergencyContactMobileNumber1, new { @class = "form-control" })
-
-
-                <label>Work</label>
-                @Html.TextBoxFor(m => m.emergencyContactMWorkNumber1, new { @class = "form-control" })
-
-
-            </div>
-
-            <br />
-
-            <div class="form-group">
-
-
-                <label>Name</label>
-                @Html.TextBoxFor(m => m.emergencyContactName2, new { @class = "form-control" })
-
-
-                <label>Relationship</label>
-                @Html.TextBoxFor(m => m.emergencyContactRelationship2, new { @class = "form-control" })
-
-
-                <label>Address</label>
-                @Html.TextBoxFor(m => m.emergencyContactAddress2, new { @class = "form-control" })
-
-
-                <label>Mobile</label>
-                @Html.TextBoxFor(m => m.emergencyContactMobileNumber2, new { @class = "form-control" })
-
-
-                <label>Work</label>
-                @Html.TextBoxFor(m => m.emergencyContactMWorkNumber2, new { @class = "form-control" })
-
-
-            </div>
-
-            <br />
-            <br />
-
-            <p> MEDICAL INFORMATION</p>
-
-
-            <br />
-
-
-
-            <div class="form-group">
-
-                <label>Name of Family Doctor</label>&nbsp;
-                @Html.TextBoxFor(m => m.familyDoctorName, new { @class = "form-control" })
-
-
-            </div>
-            <br />
-
-            <div class="form-group">
-                <label>Contact Number</label> &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-                @Html.TextBoxFor(m => m.familyDoctorNumber, new { @class = "form-control" })
-            </div>
-            <br />
-
-            <div class="form-group">
-                <label>Known Medical Conditions</label> &nbsp;&nbsp; &nbsp;
-                @Html.TextBoxFor(m => m.medicalConditions, new { @class = "form-control" })
-            </div>
-            <br />
-
-            <div class="form-group">
-                <label>Special Needs</label>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-                @Html.TextBoxFor(m => m.specialNeeds, new { @class = "form-control" })
-
-            </div>
-
-
-            <p>ACADEMIC INFORMATION</p>
-
-
-            <label>State the faculty and programme to which you applied at UTech</label>
-            <br />
-            <br />
-
-            <div class="form-group">
-
-
-                <label>Faculty</label>
-                @Html.TextBoxFor(m => m.faculty, new { @class = "form-control", @required = "true" })
-
-                <label>School</label>
-                @Html.TextBoxFor(m => m.school, new { @class = "form-control", @required = "true" })
-
-
-            </div>
-            <br />
-            <div class="form-group">
-
-
-                <label>Programme</label>
-                @Html.TextBoxFor(m => m.programme, new { @class = "form-control", @required = "true" })
-
-
-            </div>
-
-
-            <div class="form-group">
-                <label>Full Time</label>
-                @Html.RadioButtonFor(m => m.programmeMode, "Full Time", new { @required = "true" })
-                <br />
-
-
-                <label>Part Time</label>
-                @Html.RadioButtonFor(m => m.programmeMode, "Part Time")
-                <br />
-
-                <label>Summer Time</label>
-                @Html.RadioButtonFor(m => m.programmeMode, "Summer")
-                <br />
-            </div>
-
-            <br />
-
-            <div class="form-group">
-                <label>Year of Study</label>
-                @Html.TextBoxFor(m => m.yearOfStudy, new { @class = "form-control", @type = "number", @min = "1", @required = "true" })
-
-            </div>
         </div>
+    </div>
+    <div class="tab-pane" id="section-c">
+        <h3>SECTION C: TO BE COMPLETED BY ALL APPLICANTS EXCEPT RETURNING RESIDENT STUDENTS</h3>
+        <br/>
 
-        <div class="tab-pane" id="section-b">
-            <h3>SECTION B: TO BE COMPLETED BY ALL APPLICANTS</h3>
+        <label>Please list extra-curricular activities you've been involved in at high school,community college, university and your community over the pass two years.</label>
 
-            <br />
-
-            <div class="form-group">
-                <p>Please indicate the period for which you are requesting boarding (Please note that preference will be given to students requesting boarding for Semester 1 & 2):</p>
-                <br />
-                <label>Semester 1 (only) August – December:</label> @Html.RadioButtonFor(m => m.BoardingPeriod, "Sem1", new { @required = "true" }) <br />
-                <label>Semester 2 (only) January – May:</label> @Html.RadioButtonFor(m => m.BoardingPeriod, "Sem2") <br />
-                <label>Semester 1 & 2 (August – May):</label> @Html.RadioButtonFor(m => m.BoardingPeriod, "Sem1&2") <br />
-            </div>
-
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-sm-4"></div>
-                    <div class="col-sm-4 center-block"><label>Double Occupancy</label></div>
-                    <div class="col-sm-4"><label>Triple Occupancy</label></div>
-                </div>
-
-                <div id="male" class="row">
-                    <div class="col-sm-4"><label>Male(Only)</label></div>
-                    <div class="col-sm-2">Hall F: @Html.RadioButtonFor(m => m.hallPreference, "Hall F")</div>
-                    <div class="col-sm-2">Hall E: @Html.RadioButtonFor(m => m.hallPreference, "Hall E")</div>
-                    <div class="col-sm-4">Farquharson Hall: @Html.RadioButtonFor(m => m.hallPreference, "Farquharson Hall")</div>
-                </div>
-
-                <div id="female" class="row">
-                    <div class="col-sm-4"><label>Female(Only)</label></div>
-                    <div class="col-sm-2">Hall A: @Html.RadioButtonFor(m => m.hallPreference, "Hall A")</div>
-                    <div class="col-sm-2">Hall B: @Html.RadioButtonFor(m => m.hallPreference, "Hall B")</div>
-                    <div class="col-sm-4">Garvey Hall: @Html.RadioButtonFor(m => m.hallPreference, "Garvey Hall")</div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-4"><label>Unisex</label></div>
-                    <div class="col-sm-4"></div>
-                    <div class="col-sm-4">Dennis Johnson: @Html.RadioButtonFor(m => m.hallPreference, "Dennis Johnson", new { @required = "true" })</div>
-                </div>
-            </div>
-
-            <br />
-            <p>TO BE COMPLETED BY OWNERS OF MOTOR VEHICLES:</p>
-
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <label>Type</label>
-                        @Html.TextBoxFor(m => m.vehicleType, new { @class = "form-control" })
-                    </div>
-
-                    <div class="col-sm-4"></div>
-
-                    <div class="col-sm-4">
-                        <label>Model</label>
-                        @Html.TextBoxFor(m => m.vehicleModel, new { @class = "form-control" })
-                    </div>
-                </div>
-                <br />
-                <div class="row">
-                    <div class="col-sm-4">
-                        <label>Make</label>
-                        @Html.TextBoxFor(m => m.vehicleMake, new { @class = "form-control" })
-                    </div>
-
-                    <div class="col-sm-4"></div>
-
-                    <div class="col-sm-4">
-                        <label>Registration No.</label>
-                        @Html.TextBoxFor(m => m.registrationNumber, new { @class = "form-control" })
-                    </div>
-                </div>
-            </div>
-            <br />
-            <br />
-
-            <p>Financial Information:</p>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <label>Mother's Occupation:</label>
-                        @Html.TextBoxFor(m => m.motherOccupation, new { @class = "form-control" })
-                    </div>
-
-                    <div class="col-sm-4"></div>
-
-                    <div class="col-sm-4">
-                        <label>Father's Occupation:</label>
-                        @Html.TextBoxFor(m => m.fatherOccupation, new { @class = "form-control" })
-                    </div>
-                </div>
-                <br />
-                <label>Guardian's Occupation:</label>
-                @Html.TextBoxFor(m => m.guardianOccupation, new { @class = "form-control" })
-                <br />
-                <p>What is your birth position in the family? @Html.TextBoxFor(m => m.familyBirthPosition, new { @type = "number" }) of @Html.TextBoxFor(m => m.NumberOfSiblings, new { @type = "number" }) No. of dependents under parents’/guardians’ care: @Html.TextBoxFor(m => m.numberOfDependants, new { @type = "number" })</p>
-                <br />
-                <p>Who will finance you for the upcoming academic year? Tick as many as are relevant to you.</p>
-                <div class="col-sm-3">
-                    <label>Father</label> @Html.CheckBoxFor(m => m.isFatherFinacing)
-                </div>
-                <div class="col-sm-3">
-                    <label>Mother</label> @Html.CheckBoxFor(m => m.isMotherFinacing)
-                </div>
-                <div class="col-sm-3">
-                    <label>Self</label> @Html.CheckBoxFor(m => m.areYouFinancing)
-                </div>
-                <div class="col-sm-3">
-                    <label>Other(specify)</label> @Html.TextBoxFor(m => m.financeer)
-                </div>
-                <br />
-
-                <label>Have you applied for Student Loan:</label> @Html.CheckBoxFor(m => m.slbQuestion)
-                <br />
-
-                <label>Have you requested(Check all that apply):</label> <label>Grant</label> @Html.CheckBoxFor(m => m.requestedGrant) <label>Sponsorship</label> @Html.CheckBoxFor(m => m.requestedSponsorship)
-                <br />
-
-                <label>If yes, please state the organization(s) and the amount:</label>
-                @Html.TextAreaFor(m => m.scholarshipsGranted, new { @class = "form-control" })
-
-            </div>
-        </div>
-        <div class="tab-pane" id="section-c">
-            <h3>SECTION C: TO BE COMPLETED BY ALL APPLICANTS EXCEPT RETURNING RESIDENT STUDENTS</h3>
-            <br />
-
-            <label>Please list extra-curricular activities you've been involved in at high school,community college, university and your community over the pass two years.</label>
-
-            <div class="form-group">
+        <div class="form-group row">
+            <div class="col-md-4">
                 <label>1</label>
                 @Html.TextBoxFor(m => m.extraCurriculars1, new { @class = "form-control" })
-
             </div>
-            <br />
-            <div class="form-group">
+            
+            <div class="col-md-4">
                 <label>2</label>
                 @Html.TextBoxFor(m => m.extraCurriculars2, new { @class = "form-control" })
-
             </div>
-            <br />
-            <div class="form-group">
+            
+            <div class="col-md-4">
                 <label>3</label>
                 @Html.TextBoxFor(m => m.extraCurriculars3, new { @class = "form-control" })
-
             </div>
-            <br />
-            <div class="form-group">
+            
+            <div class="col-md-4">
                 <label>4</label>
                 @Html.TextBoxFor(m => m.extraCurriculars4, new { @class = "form-control" })
-
             </div>
-            <br />
-            <div class="form-group">
+            
+            <div class="col-md-4">
                 <label>5</label>
                 @Html.TextBoxFor(m => m.extraCurriculars5, new { @class = "form-control" })
-
             </div>
 
-            <br />
+        </div>
 
+        <br/>
+        <div class="row">
             <label>Please list your special skills,experiences and abilities.</label>
+        </div>
+        
 
 
-            <br />
+        <br/>
 
-            <div class="form-group">
+        <div class="form-group row">
+            <div class="col-md-4">
                 <label>1</label>
                 @Html.TextBoxFor(m => m.skills1, new { @class = "form-control" })
-
             </div>
-            <br />
-            <div class="form-group">
+            
+            <div class="col-md-4">
                 <label>2</label>
                 @Html.TextBoxFor(m => m.skills2, new { @class = "form-control" })
-
             </div>
-            <br />
-            <div class="form-group">
+            
+            <div class="col-md-4">
                 <label>3</label>
                 @Html.TextBoxFor(m => m.skills3, new { @class = "form-control" })
-
             </div>
-            <br />
-            <div class="form-group">
+            
+            <div class="col-md-4">
                 <label>4</label>
                 @Html.TextBoxFor(m => m.skills4, new { @class = "form-control" })
-
             </div>
-            <br />
-            <div class="form-group">
+            
+            <div class="col-md-4">
                 <label>5</label>
                 @Html.TextBoxFor(m => m.skills5, new { @class = "form-control" })
-
             </div>
 
+        </div>
+        
+        <div class="row">
             <label>Please list some attributes that best describe you</label>
+        </div>
 
+        <br/>
 
-            <br />
-
-            <div class="form-group">
+        <div class="form-group row">
+            <div class="col-md-4">
                 <label>1</label>
                 @Html.TextBoxFor(m => m.attributes1, new { @class = "form-control" })
-
             </div>
-            <br />
-            <div class="form-group">
+
+            <div class="col-md-4">
                 <label>2</label>
                 @Html.TextBoxFor(m => m.attributes2, new { @class = "form-control" })
-
             </div>
-            <br />
-            <div class="form-group">
+
+            <div class="col-md-4">
                 <label>3</label>
                 @Html.TextBoxFor(m => m.attributes3, new { @class = "form-control" })
-
             </div>
-            <br />
-            <div class="form-group">
+
+            <div class="col-md-4">
                 <label>4</label>
                 @Html.TextBoxFor(m => m.attributes4, new { @class = "form-control" })
-
             </div>
-            <br />
-            <div class="form-group">
+
+            <div class="col-md-4">
                 <label>5</label>
                 @Html.TextBoxFor(m => m.attributes5, new { @class = "form-control" })
-
             </div>
 
+        </div>
+        
+        <div class="form-group row">
             <label>In not more than five (5) sentences, outline your reasons for boarding on campus apart from location and cost.</label>
             @Html.TextAreaFor(m => m.reasonOfApplication, new { @class = "form-control", @required = "true" })
-
         </div>
-        <div class="tab-pane" id="section-d">
-            <h3>SECTION D: TO BE COMPLETED BY RETURNING STUDENTS ONLY</h3>
-            <br/>
 
-            <div class="form-group">
+    </div>
+
+    <div class="tab-pane" id="section-d">
+        <h3>SECTION D: TO BE COMPLETED BY RETURNING STUDENTS ONLY</h3>
+        <br/>
+
+        <div class="form-group row">
+            <div class="col-md-4">
                 <label>Room Number</label>
                 @Html.TextBoxFor(m => m.roomNumber, new { @class = "form-control", @type = "number" })
-                <br />
-
+            </div>
+            
+            <div class="col-md-4">
                 <label>Hall/Block</label>
                 @Html.TextBoxFor(m => m.hallBlock, new { @class = "form-control" })
-                <br />
-
+            </div>
+            
+            <div class="col-md-4">
                 <label>Year on Dorm</label>
                 @Html.TextBoxFor(m => m.yearsOnHall, new { @class = "form-control", @type = "number" })
-                <br />
-
-
-
-            </div>
-            <br />
-            <div class="form-group">
-                <label>List of Hall Committes you've served on</label>
-
-                @Html.TextAreaFor(m => m.hallCommiteesServed, new { @class = "form-control" })
-
-            </div>
-
-            <br />
-
-            <div class="form-group">
-                <label>Hall or University Events/activities participated in:</label>
-                <br />
-                @Html.TextAreaFor(m => m.hallActivitiesInvolved, new { @class = "form-control" })
-
-            </div>
-            <br />
-
-
-            <label>Write a short paragraph outlining why you should be readmitted to the Hall</label>
-            <div class="form-group">
-
-                @Html.TextAreaFor(m => m.reasonReturning, new { @class = "form-control" })
-
             </div>
         </div>
-        <div class="tab-pane" id="section-e">
-            <h3>SECTION E: TO BE COMPLETED BY SUMMER STUDENTS ONLY</h3>
-            <br />
 
-            <div class="form-group">
-                <label>Please indicate the data you intend to start living on dorm</label>
 
-                @Html.TextBoxFor(m => m.expectedToStart, new { @class = "form-control", @type = "date" })
+        <div class="form-group row">
+            <div class="col-md-10">
+                <label>List of Hall Committees you've served on</label>
 
+                @Html.TextAreaFor(m => m.hallCommiteesServed, new { @class = "form-control"})
             </div>
+        </div>
 
-            <br />
 
-            <div class="form-group">
-                <label>Please indicate your departure date</label>
+        <div class="form-group row">
+            <div class="col-md-10">
+                <label>Hall or University Events/activities participated in:</label>
+                @Html.TextAreaFor(m => m.hallActivitiesInvolved, new { @class = "form-control" })
+            </div>
+        </div>
 
-                @Html.TextBoxFor(m => m.expectedToDepart, new { @class = "form-control", @type = "date" })
-
+        <div class="form-group row">
+            <div class="col-md-10">
+                <label>Write a short paragraph outlining why you should be readmitted to the Hall</label>
+                @Html.TextAreaFor(m => m.reasonReturning, new { @class = "form-control" })
             </div>
         </div>
     </div>
+
+    <div class="tab-pane" id="section-e">
+        <h3>SECTION E: TO BE COMPLETED BY SUMMER STUDENTS ONLY</h3>
+        <br/>
+
+        <div class="form-group">
+            <label>Please indicate the data you intend to start living on dorm</label>
+
+            @Html.TextBoxFor(m => m.expectedToStart, new {@class = "form-control", @type = "date"})
+
+        </div>
+
+        <br/>
+
+        <div class="form-group">
+            <label>Please indicate your departure date</label>
+
+            @Html.TextBoxFor(m => m.expectedToDepart, new {@class = "form-control", @type = "date"})
+
+        </div>
+    </div>
+    </div>
+    <br/>
+    <br/>
+    <br/>
     <div class="form-group">
         <input type="checkbox" id="accept" />
         <label>
@@ -638,74 +660,146 @@
         </label>
     </div>
 
-        <p>
-            NOTES
-            <ol>
-                <li>Acceptance to the University does not guarantee on-campus accommodation.</li>
-                <li>Only full time students are eligible to apply for on-campus accommodation.</li>
-                <li>It is your responsibility to update your contact information after completing an application form.</li>
-                <li>Persons who have been offered and accepted a place on the Halls of Residence will only be guaranteed accommodation for a period of one academic year, providing that all rules and regulations are adhered to.</li>
-                <li>
-                    Students, who have been assigned on-campus accommodation, please note that fees are payable at any branch
-                    of NCB, Paymaster, Bill Express and UTech Accounts Receivable using a debit card or manager’s cheque.
-                </li>
-                <li>
-                    Students who have been accepted to the University, and requested accommodation MUST contact the
-                    Accommodation Office to verify their status.
-                </li>
-                <li>
-                    <b style="color: red;">
-                        PLEASE CONTACT THE ACCOMMODATION OFFICE TO ENSURE YOUR APPLICATION WAS
-                        RECEIVED.
-                    </b>
-                </li>
-            </ol>
-        </p>
+    <p>
+        NOTES
+        <ol>
+            <li>Acceptance to the University does not guarantee on-campus accommodation.</li>
+            <li>Only full time students are eligible to apply for on-campus accommodation.</li>
+            <li>It is your responsibility to update your contact information after completing an application form.</li>
+            <li>Persons who have been offered and accepted a place on the Halls of Residence will only be guaranteed accommodation for a period of one academic year, providing that all rules and regulations are adhered to.</li>
+            <li>
+                Students, who have been assigned on-campus accommodation, please note that fees are payable at any branch
+                of NCB, Paymaster, Bill Express and UTech Accounts Receivable using a debit card or manager’s cheque.
+            </li>
+            <li>
+                Students who have been accepted to the University, and requested accommodation MUST contact the
+                Accommodation Office to verify their status.
+            </li>
+            <li>
+                <b style="color: red;">
+                    PLEASE CONTACT THE ACCOMMODATION OFFICE TO ENSURE YOUR APPLICATION WAS
+                    RECEIVED.
+                </b>
+            </li>
+        </ol>
+    </p>
         <div class="form-group">
             <input type="submit" disabled value="Submit" id="submit" class="btn btn-primary" />
         </div>
-        }
+}
 
 @section scripts
 {
-            <script type="text/javascript">
-                $('#nav a:first').tab('show');
+    <script type="text/javascript">
+        $faculty = $("#faculty");
+        $school = $("#schoolDDL");
+        $schoolTextBox = $("#school");
 
-                $('input[type=radio][name=gender]').on('change', function () {
-                    switch ($(this).val()) {
-                    case 'Male':
-                        $('#female').css('display', 'none');
-                        $('#female').find(':input').prop('disabled', true);
+        setSchoolDropDownList();
+        $school.val($schoolTextBox.val());
+        alert($schoolTextBox.val());
 
-                        $('#male').css('display', 'block');
-                        $('#male').find(':input').prop('disabled', false);
-                        break;
-                    case 'Female':
-                        $('#female').css('display', 'block');
-                        $('#female').find(':input').prop('disabled', false);
+        
 
-                        $('#male').css('display', 'none');
-                        $('#male').find(':input').prop('disabled', true);
-                        break;
-                    }
-                });
+        $('#nav a:first').tab('show');
 
-                $("#accept").change(function () {
-                    if (this.checked) {
-                        $('#submit').prop('disabled', false);
-                    } else {
-                        $('#submit').prop('disabled', true);
-                    }
-                });
+        $school.change(function () {
+            $schoolTextBox.val();
+            $schoolTextBox.val($(this).val());
+        });
 
-                function save() {
-                    alert("Form Saved");
-                    $('#boardingForm').find(':input').prop('required', false);
-                    $('#boardingForm').attr('action', '/BoardingApplicationForm/Save');
-                    $('#submit').prop('disabled', false);
-                    document.getElementById("submit").click();
+        $faculty.change(function () {
+            setSchoolDropDownList();
+        });
 
-                }
-            </script>
+        function setSchoolDropDownList(){
+            $("#schoolDDL option").remove();
+            $schoolTextBox.val("");
+            switch ($faculty.val()) {
+                case "College of Health Sciences (COHS)":
+                    $("<option>Caribbean School of Nursing</option>").appendTo($school);
+                    $("<option>School of Allied Health & Wellness</option>").appendTo($school);
+                    $("<option>School of Pharmacy</option>").appendTo($school);
+                    break;
+
+                case "College of Business and Management (COBAM)":
+                    $("<option>School of Business Administration</option>").appendTo($school);
+                    $("<option>School of Hospitality and Tourism Management</option>").appendTo($school);
+                    $("<option>Joan Duncan School of Entrepreneurship, Ethics & Leadership</option>").appendTo($school);
+                    $("<option>UTech/JIM School of Advanced Management</option>").appendTo($school);
+                    break;
+
+                case "Faculty of Education and Liberal Studies (FELS)":
+                    $("<option>School of Technical & Vocational Education</option>").appendTo($school);
+                    $("<option>School of Humanities & Social Sciences</option>").appendTo($school);
+                    break;
+
+                case "Faculty of The Built Environment (FOBE)":
+                    $("<option>School of Building & Land Management</option>").appendTo($school);
+                    $("<option>Caribbean School of Architecture</option>").appendTo($school);
+                    break;
+
+                case "Faculty of Engineering and Computing (FENC)":
+                    $("<option>School of Engineering</option>").appendTo($school);
+                    $("<option>School of Computing and Information Technology</option>").appendTo($school);
+                    break;
+
+                case "Faculty of Law (FOL)":
+                    break;
+
+                case "Faculty of Science and Sport (FOSS)":
+                    $("<option>School of Natural & Applied Sciences</option>").appendTo($school);
+                    $("<option>School of Mathematics & Statistics</option>").appendTo($school);
+                    $("<option>Caribbean School of Sport Sciences</option>").appendTo($school);
+                    $("<option>Centre for Science-based Research, Entrepreneurship & Continuing Studies</option>").appendTo($school);
+                    break;
+
+                case "Joint Colleges of Medicine, Oral Health & Veterinary Sciences":
+                    $("<option>Medicine</option>").appendTo($school);
+                    $("<option>Public Health & Health Technology</option>").appendTo($school);
+                    $("<option>Oral Health Sciences</option>").appendTo($school);
+                    $("<option>Veterinary Sciences</option>").appendTo($school);
+                    break;
+            }
+        }
+
+
+
+        $('input[type=radio][name=gender]').on('change', function () {
+            switch ($(this).val()) {
+            case 'Male':
+                $('#female').css('display', 'none');
+                $('#female').find(':input').prop('disabled', true);
+
+                $('#male').css('display', 'block');
+                $('#male').find(':input').prop('disabled', false);
+                break;
+            case 'Female':
+                $('#female').css('display', 'block');
+                $('#female').find(':input').prop('disabled', false);
+
+                $('#male').css('display', 'none');
+                $('#male').find(':input').prop('disabled', true);
+                break;
+            }
+        });
+
+        $("#accept").change(function () {
+            if (this.checked) {
+                $('#submit').prop('disabled', false);
+            } else {
+                $('#submit').prop('disabled', true);
+            }
+        });
+
+        function save() {
+            alert("Form Saved");
+            $('#boardingForm').find(':input').prop('required', false);
+            $('#boardingForm').attr('action', '/BoardingApplicationForm/Save');
+            $('#submit').prop('disabled', false);
+            document.getElementById("submit").click();
+
+        }
+    </script>
         }
 
