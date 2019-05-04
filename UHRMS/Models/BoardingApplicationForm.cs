@@ -82,6 +82,22 @@ namespace UHRMS.Models
         public string town { get; set; }
 
         public string parish { get; set; }
+        public static IList<string> ParishList = new List<string>()
+        {
+            "Kingston & St. Andrew",
+            "Clarendon",
+            "Hanover",
+            "Manchester",
+            "Portland",
+            "St. Ann",
+            "St. Catherine",
+            "St. Elizabeth",
+            "St. James",
+            "St Mary",
+            "St. Thomas",
+            "Trelawny",
+            "Westmoreland"
+        };
 
         public string country { get; set; }
 
@@ -299,6 +315,8 @@ namespace UHRMS.Models
 
 
         public bool FormComplete { get; set; }
+
+        public int ApplicationScore { get; set; }
 
 
     }

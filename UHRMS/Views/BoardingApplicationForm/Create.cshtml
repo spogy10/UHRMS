@@ -154,7 +154,7 @@
 
         <div class="col-md-3">
             <label>Parish</label>
-            @Html.TextBoxFor(m => m.parish, new { @class = "form-control" })
+            @Html.DropDownListFor(m => m.parish, new SelectList(BoardingApplicationForm.ParishList), new { @class = "form-control", @required = "true" })
         </div>
 
         <div class="col-md-3">

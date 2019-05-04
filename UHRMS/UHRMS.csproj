@@ -278,6 +278,10 @@
     <Compile Include="Migrations\201904250250477_BoardingForm_Complete_Attribute.Designer.cs">
       <DependentUpon>201904250250477_BoardingForm_Complete_Attribute.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905040506228_ApplicationScore.cs" />
+    <Compile Include="Migrations\201905040506228_ApplicationScore.Designer.cs">
+      <DependentUpon>201905040506228_ApplicationScore.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModels.cs" />
@@ -293,6 +297,7 @@
     <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utility\CriteriaCalculation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -434,6 +439,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904250250477_BoardingForm_Complete_Attribute.resx">
       <DependentUpon>201904250250477_BoardingForm_Complete_Attribute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905040506228_ApplicationScore.resx">
+      <DependentUpon>201905040506228_ApplicationScore.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

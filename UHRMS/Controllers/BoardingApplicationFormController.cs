@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using UHRMS.Models;
+using UHRMS.Utility;
 
 namespace UHRMS.Controllers
 {
@@ -44,7 +45,7 @@ namespace UHRMS.Controllers
         {
             if (ModelState.IsValid)
             {
-                //todo:add form to database
+                //add form to database
                 string id = User.Identity.GetUserId();
                 Student student = _context.Students.FirstOrDefault(x => x.studentId == id);
                 BoardingApplicationForm DatabaseForm = _context.BoardingForms.FirstOrDefault(x => x.studentId == id);
@@ -64,7 +65,9 @@ namespace UHRMS.Controllers
                 student.emergencyContactNumber2 = form.emergencyContactMobileNumber2;
 
                 form.FormComplete = true;
-            
+
+                CriteriaCalculation calculation = new CriteriaCalculation(form);
+                form.ApplicationScore = calculation.CalculatePoints();
 
                 form.studentId = id;
                 form.Student = student;
@@ -85,7 +88,7 @@ namespace UHRMS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Save(BoardingApplicationForm form)
         {
-            //todo:add form to database
+            //add form to database
             string id = User.Identity.GetUserId();
             Student student = _context.Students.FirstOrDefault(x => x.studentId == id);
             BoardingApplicationForm DatabaseForm = _context.BoardingForms.FirstOrDefault(x => x.studentId == id);
