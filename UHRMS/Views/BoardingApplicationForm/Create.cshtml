@@ -695,96 +695,96 @@
         $school = $("#schoolDDL");
         $schoolTextBox = $("#school");
 
-        setSchoolDropDownList();
+        setSchoolDropDownList(false);
         $school.val($schoolTextBox.val());
-        alert($schoolTextBox.val());
 
-        
 
         $('#nav a:first').tab('show');
 
-        $school.change(function () {
-            $schoolTextBox.val();
+        $school.change(function() {
             $schoolTextBox.val($(this).val());
         });
 
-        $faculty.change(function () {
-            setSchoolDropDownList();
+        $faculty.change(function() {
+            setSchoolDropDownList(true);
         });
 
-        function setSchoolDropDownList(){
+        function setSchoolDropDownList(removeValueOfHiddenField) {
             $("#schoolDDL option").remove();
-            $schoolTextBox.val("");
+            if (removeValueOfHiddenField) {
+                $schoolTextBox.val("");
+            }
             switch ($faculty.val()) {
-                case "College of Health Sciences (COHS)":
-                    $("<option>Caribbean School of Nursing</option>").appendTo($school);
-                    $("<option>School of Allied Health & Wellness</option>").appendTo($school);
-                    $("<option>School of Pharmacy</option>").appendTo($school);
-                    break;
+            case "College of Health Sciences (COHS)":
+                $("<option>Caribbean School of Nursing</option>").appendTo($school);
+                $("<option>School of Allied Health & Wellness</option>").appendTo($school);
+                $("<option>School of Pharmacy</option>").appendTo($school);
+                break;
 
-                case "College of Business and Management (COBAM)":
-                    $("<option>School of Business Administration</option>").appendTo($school);
-                    $("<option>School of Hospitality and Tourism Management</option>").appendTo($school);
-                    $("<option>Joan Duncan School of Entrepreneurship, Ethics & Leadership</option>").appendTo($school);
-                    $("<option>UTech/JIM School of Advanced Management</option>").appendTo($school);
-                    break;
+            case "College of Business and Management (COBAM)":
+                $("<option>School of Business Administration</option>").appendTo($school);
+                $("<option>School of Hospitality and Tourism Management</option>").appendTo($school);
+                $("<option>Joan Duncan School of Entrepreneurship, Ethics & Leadership</option>").appendTo($school);
+                $("<option>UTech/JIM School of Advanced Management</option>").appendTo($school);
+                break;
 
-                case "Faculty of Education and Liberal Studies (FELS)":
-                    $("<option>School of Technical & Vocational Education</option>").appendTo($school);
-                    $("<option>School of Humanities & Social Sciences</option>").appendTo($school);
-                    break;
+            case "Faculty of Education and Liberal Studies (FELS)":
+                $("<option>School of Technical & Vocational Education</option>").appendTo($school);
+                $("<option>School of Humanities & Social Sciences</option>").appendTo($school);
+                break;
 
-                case "Faculty of The Built Environment (FOBE)":
-                    $("<option>School of Building & Land Management</option>").appendTo($school);
-                    $("<option>Caribbean School of Architecture</option>").appendTo($school);
-                    break;
+            case "Faculty of The Built Environment (FOBE)":
+                $("<option>School of Building & Land Management</option>").appendTo($school);
+                $("<option>Caribbean School of Architecture</option>").appendTo($school);
+                break;
 
-                case "Faculty of Engineering and Computing (FENC)":
-                    $("<option>School of Engineering</option>").appendTo($school);
-                    $("<option>School of Computing and Information Technology</option>").appendTo($school);
-                    break;
+            case "Faculty of Engineering and Computing (FENC)":
+                $("<option>School of Engineering</option>").appendTo($school);
+                $("<option>School of Computing and Information Technology</option>").appendTo($school);
+                break;
 
-                case "Faculty of Law (FOL)":
-                    break;
+            case "Faculty of Law (FOL)":
+                break;
 
-                case "Faculty of Science and Sport (FOSS)":
-                    $("<option>School of Natural & Applied Sciences</option>").appendTo($school);
-                    $("<option>School of Mathematics & Statistics</option>").appendTo($school);
-                    $("<option>Caribbean School of Sport Sciences</option>").appendTo($school);
-                    $("<option>Centre for Science-based Research, Entrepreneurship & Continuing Studies</option>").appendTo($school);
-                    break;
+            case "Faculty of Science and Sport (FOSS)":
+                $("<option>School of Natural & Applied Sciences</option>").appendTo($school);
+                $("<option>School of Mathematics & Statistics</option>").appendTo($school);
+                $("<option>Caribbean School of Sport Sciences</option>").appendTo($school);
+                $("<option>Centre for Science-based Research, Entrepreneurship & Continuing Studies</option>")
+                    .appendTo($school);
+                break;
 
-                case "Joint Colleges of Medicine, Oral Health & Veterinary Sciences":
-                    $("<option>Medicine</option>").appendTo($school);
-                    $("<option>Public Health & Health Technology</option>").appendTo($school);
-                    $("<option>Oral Health Sciences</option>").appendTo($school);
-                    $("<option>Veterinary Sciences</option>").appendTo($school);
-                    break;
+            case "Joint Colleges of Medicine, Oral Health & Veterinary Sciences":
+                $("<option>Medicine</option>").appendTo($school);
+                $("<option>Public Health & Health Technology</option>").appendTo($school);
+                $("<option>Oral Health Sciences</option>").appendTo($school);
+                $("<option>Veterinary Sciences</option>").appendTo($school);
+                break;
             }
         }
 
 
+        $('input[type=radio][name=gender]').on('change',
+            function() {
+                switch ($(this).val()) {
+                case 'Male':
+                    $('#female').css('display', 'none');
+                    $('#female').find(':input').prop('disabled', true);
 
-        $('input[type=radio][name=gender]').on('change', function () {
-            switch ($(this).val()) {
-            case 'Male':
-                $('#female').css('display', 'none');
-                $('#female').find(':input').prop('disabled', true);
+                    $('#male').css('display', 'block');
+                    $('#male').find(':input').prop('disabled', false);
+                    break;
+                case 'Female':
+                    $('#female').css('display', 'block');
+                    $('#female').find(':input').prop('disabled', false);
 
-                $('#male').css('display', 'block');
-                $('#male').find(':input').prop('disabled', false);
-                break;
-            case 'Female':
-                $('#female').css('display', 'block');
-                $('#female').find(':input').prop('disabled', false);
+                    $('#male').css('display', 'none');
+                    $('#male').find(':input').prop('disabled', true);
+                    break;
+                }
+            });
 
-                $('#male').css('display', 'none');
-                $('#male').find(':input').prop('disabled', true);
-                break;
-            }
-        });
-
-        $("#accept").change(function () {
+        $("#accept").change(function() {
             if (this.checked) {
                 $('#submit').prop('disabled', false);
             } else {
@@ -801,5 +801,5 @@
 
         }
     </script>
-        }
+}
 
