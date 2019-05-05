@@ -1,0 +1,174 @@
+﻿@using UHRMS.Models
+@model UHRMS.Models.CheckInForm
+
+@{
+    ViewBag.Title = "Check In";
+
+
+    var hallSelectList = (SelectList) ViewBag.HallSelectList;
+}
+
+<h2>Check In</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row form-group">
+        <div class="col-md-4">
+            <label>Check-in Date</label>
+            @Html.TextBoxFor(m => m.CheckInDate, new {@class="form-control", @type="date"})
+        </div>
+
+        <div class="col-md-4">
+            @if (ViewBag.RoomNumberError)
+            {
+                
+            <label>Enter room number: <p style="color: red;">Invalid Room Number</p></label>
+            }
+            else
+            {
+                <label>Enter room number:</label>
+            }
+
+            @Html.TextBoxFor(m => m.Room, new { @class = "form-control" })
+        </div>
+        
+        <div class="col-md-4">
+            <label>Hall</label>
+            @Html.DropDownListFor(m => m.Dorm, hallSelectList, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <table cellspacing="5" cellpadding="5" style="color:black;background-color:lightblue;border-width:2px;border-style:solid;font-family:Palatino;font-size:X-Large;width:550px;">
+            <tr style="background-color:lightblue;font-weight:bold;">
+                <th>
+                    <span>Study Desk</span>
+                    <table>
+                        <tr>
+                            <td>@Html.RadioButtonFor(m => m.StudyDesk, "Needs Repair")<label>Needs Repair</label></td>
+                        </tr>
+                        <tr>
+                            <td>@Html.RadioButtonFor(m => m.StudyDesk, "Suitable")<label>Suitable</label></td>
+                        </tr>
+                    </table>
+                </th>
+                <th>
+                    <span>Chairs</span><table>
+                        <tr>
+                            <td>@Html.RadioButtonFor(m => m.Chairs, "Needs Repair")<label>Needs Repair</label></td>
+                        </tr>
+                        <tr>
+                            <td>@Html.RadioButtonFor(m => m.Chairs, "Suitable")<label>Suitable</label></td>
+                        </tr>
+                    </table>
+                </th>
+                <th>
+                    <span>Bulb</span><table>
+                        <tr>
+                            <td>@Html.RadioButtonFor(m => m.Bulb, "Needs Repair")<label>Needs Repair</label></td>
+                        </tr>
+                        <tr>
+                            <td>@Html.RadioButtonFor(m => m.Bulb, "Suitable")<label>Suitable</label></td>
+                        </tr>
+                    </table>
+                </th>
+            </tr>
+            <tr style="background-color:lightblue;">
+                <td>
+                    <span>Closet</span><table>
+                        <tr>
+                            <td>@Html.RadioButtonFor(m => m.Closet, "Needs Repair")<label>Needs Repair</label></td>
+                        </tr>
+                        <tr>
+                            <td>@Html.RadioButtonFor(m => m.Closet, "Suitable")<label>Suitable</label></td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <span>Door</span><table>
+                        <tr>
+                            <td>@Html.RadioButtonFor(m => m.Door, "Needs Repair")<label>Needs Repair</label></td>
+                        </tr>
+                        <tr>
+                            <td>@Html.RadioButtonFor(m => m.Door, "Suitable")<label>Suitable</label></td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <span>Dresser</span><table>
+                        <tr>
+                            <td>@Html.RadioButtonFor(m => m.Dresser, "Needs Repair")<label>Needs Repair</label></td>
+                        </tr>
+                        <tr>
+                            <td>@Html.RadioButtonFor(m => m.Dresser, "Suitable")<label>Suitable</label></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr style="background-color:lightblue;">
+                <td>
+                    <span>Bed</span><table>
+                        <tr>
+                            <td>@Html.RadioButtonFor(m => m.Bed, "Needs Repair")<label>Needs Repair</label></td>
+                        </tr>
+                        <tr>
+                            <td>@Html.RadioButtonFor(m => m.Bed, "Suitable")<label>Suitable</label></td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <span>Light Switch</span><table>
+                        <tr>
+                            <td>@Html.RadioButtonFor(m => m.LightSwitch, "Needs Repair")<label>Needs Repair</label></td>
+                        </tr>
+                        <tr>
+                            <td>@Html.RadioButtonFor(m => m.LightSwitch, "Suitable")<label>Suitable</label></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Mattress</span><table>
+                        <tr>
+                            <td>@Html.RadioButtonFor(m => m.Mattress, "Needs Repair")<label>Needs Repair</label></td>
+                        </tr>
+                        <tr>
+                            <td>@Html.RadioButtonFor(m => m.Mattress, "Suitable")<label>Suitable</label></td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <span>Windows</span><table>
+                        <tr>
+                            <td>@Html.RadioButtonFor(m => m.Windows, "Needs Repair")<label>Needs Repair</label></td>
+                        </tr>
+                        <tr>
+                            <td>@Html.RadioButtonFor(m => m.Windows, "Suitable")<label>Suitable</label></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr></tr>
+        </table>
+        
+        <br />
+
+        <p>I hereby confirm that the facilities checked above are in the condition described.</p>
+        <br />
+        <p>
+            I also agree to accept full/joint responsibility for any damage or loss that may occur as a result 
+            of misuse, negligence or malice and hereby consent that appropriate charges be deducted from my caution fee.
+            <br />
+            N.B. Students also have the responsibility for loss or damage to other Hall Facilities.
+        </p>
+
+        <input type="submit" name="submit" value="Confirm " id="submit" class="btn btn-success" />
+
+
+        <button id="cancel" class="btn btn-danger" >Cancel</button>
+
+
+    </div>
+}

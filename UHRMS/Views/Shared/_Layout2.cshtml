@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script language="javascript" >
+        var popUpWin=0;
+
+        function popUpWindow(URLStr, left, top, width, height)
+        {
+            if(popUpWin)
+            {
+                if(!popUpWin.closed) popUpWin.close();
+            }
+
+            popUpWin = open(URLStr, 'popUpWin', 'toolbar=no,location=no,directories=no,status=yes,menubar=no,scrollbars=yes,resizable=yes,copyhistory=yes,width='+width+',height='+height+',left='+left+', top='+top+',screenX='+left+',screenY='+top+'');
+        }
+
+    </script>
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img src="~/Images/1748100437_381855bc-6214-4d49-aa37-8d6f8b4038d0.png" />
+              
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    @if (User.IsInRole("Student"))
+                    {
+                        <li>@Html.ActionLink("Apply", "Create", "BoardingApplicationForm")</li>
+                    }
+                    @if (User.IsInRole("Student"))
+                    {
+                        <li><a href="javascript:popUpWindow('https://ecommerce.utech.edu.jm/StudentBoardingFees/index.html',20,20,800,600);">Pay Boarding Fees</a></li>
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Manage Users", "ManageUser", "Admin")</li>
+                    }
+                    <li>@Html.ActionLink("Add Room", "CreateRoom", "Room")</li>
+                    <li>@Html.ActionLink("Add Dorm", "CreateDorm", "Dorm")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year -UHRMS Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+        
+
+
+
+
+
+
+
+</body>
+</html>

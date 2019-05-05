@@ -9,6 +9,51 @@
     padding-right: 15px;
 }
 
+
+.banner {
+    border-bottom-color: red;
+    border-style: solid double;
+    border-width: 15px;
+}
+
+.portal {
+    background-color: #bfdbf7;
+    margin-left: 25px;
+    margin-right:15px;
+}
+
+#bill {
+    background-color: #bfdbf7;
+}
+
+#profile{
+    height:200px;
+    width:200px;
+    border:red;
+    border-style:solid;
+    border-width:thick;
+    margin-right:15px;
+}
+
+#update {
+    height: 500px;
+    width: 300px;
+    border: red;
+    border-style: solid;
+    border-width: thick;
+}
+
+#selection {
+    border: red;
+    border-style: solid;
+    border-width: thick;
+    width: 200px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+
+
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */

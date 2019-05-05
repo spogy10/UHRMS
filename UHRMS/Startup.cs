@@ -75,6 +75,15 @@ namespace UHRMS
                 };
                 roleManager.Create(role);
             }
+
+            if (!roleManager.RoleExists("Resident"))
+            {
+                var role = new IdentityRole
+                {
+                    Name = "Resident"
+                };
+                roleManager.Create(role);
+            }
         }
     }
 }

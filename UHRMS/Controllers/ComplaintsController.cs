@@ -12,7 +12,8 @@ namespace UHRMS.Controllers
         // GET: Complaints
         public ActionResult Index()
         {
-            return View();
+            //return View();
+            return null;
         }
     }
 }

@@ -16,6 +16,8 @@ namespace UHRMS.Models
 
         public DbSet<BoardingApplicationForm> BoardingForms { get; set; }
 
+        public DbSet<CheckInForm> CheckInForm { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

@@ -27,7 +27,20 @@ namespace UHRMS.Controllers
             return View();
         }
 
-        public ActionResult FarquharsonHall()
+        public ActionResult Garvey()
+        {
+            return View();
+        }
+
+        public ActionResult Denis()
+        {
+            return View();
+        }
+
+        public ActionResult Lome()
+        { return View(); }
+
+        public ActionResult Farquharson()
         {
             return View();
         }

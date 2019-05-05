@@ -3,17 +3,14 @@
 
 @{
     ViewBag.Title = "Manage User";
-    
 
 
-    var emailList = (from p in Model select p).Select(p =>
-    new SelectListItem
+    var emailList = Model.Select(p=> new SelectListItem
     {
         Selected = false,
         Text = p.Email,
         Value = p.ID
-    }
-    );
+    });
 }
 
 <h2>Maintain Users and Roles</h2>
@@ -63,17 +60,43 @@
 @section scripts
 {
     <script type="text/javascript">
+        maxIndex = @i;
+        $ddlEmail = $("#ddlEmail");
+        onDdlEmailChange();
+
         function selectUser(i) {
             var userID = $("#tdID-" + i).html();
             
-            $("#ddlEmail").val(userID);
+            $ddlEmail.val(userID);
 
             var roles = $("#tdRoles-" + i).html();
 
             $("#CurrentRoles").val(roles.split(", "));
 
             $("#ddlRoles").val(roles.split(", ")).html();
+
         }
+
+        $ddlEmail.change(function () {
+            onDdlEmailChange();
+        });
+
+        function onDdlEmailChange() {
+            for (var i = 0; i < maxIndex; i++) {
+                if ($("#tdID-" + i).html() === $ddlEmail.val()) {
+                    var roles = $("#tdRoles-" + i).html();
+
+                    $("#CurrentRoles").val(roles.split(", "));
+
+                    $("#ddlRoles").val(roles.split(", ")).html();
+                    break;
+                }
+            }
+        }
+
+
+
+
     </script>
         
 }

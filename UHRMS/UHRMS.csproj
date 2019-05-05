@@ -202,6 +202,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
+    <Compile Include="Controllers\ResidentController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -282,12 +283,25 @@
     <Compile Include="Migrations\201905040506228_ApplicationScore.Designer.cs">
       <DependentUpon>201905040506228_ApplicationScore.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905042131339_CheckIn.cs" />
+    <Compile Include="Migrations\201905042131339_CheckIn.Designer.cs">
+      <DependentUpon>201905042131339_CheckIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905042143351_CheckIn1.cs" />
+    <Compile Include="Migrations\201905042143351_CheckIn1.Designer.cs">
+      <DependentUpon>201905042143351_CheckIn1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905042230150_Change_Dorm_PrimaryKey_To_string.cs" />
+    <Compile Include="Migrations\201905042230150_Change_Dorm_PrimaryKey_To_string.Designer.cs">
+      <DependentUpon>201905042230150_Change_Dorm_PrimaryKey_To_string.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\BoardingApplicationForm.cs" />
+    <Compile Include="Models\CheckInForm.cs" />
     <Compile Include="Models\Complaints.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Dorm.cs" />
@@ -314,6 +328,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\JavaScript.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -334,10 +349,10 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_Layout2.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Index2.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -365,7 +380,14 @@
     <Content Include="Views\Dorm\CreateDorm.cshtml" />
     <Content Include="Views\BoardingApplicationForm\Applied.cshtml" />
     <Content Include="Views\Admin\ManageUser.cshtml" />
-    <Content Include="Views\Home\FarquharsonHall.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Denis.cshtml" />
+    <Content Include="Views\Home\Garvey.cshtml" />
+    <Content Include="Views\Home\Lome.cshtml" />
+    <Content Include="Views\Shared\_LayoutHome.cshtml" />
+    <Content Include="Views\Home\Farquharson.cshtml" />
+    <Content Include="Views\Resident\CheckIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -442,6 +464,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905040506228_ApplicationScore.resx">
       <DependentUpon>201905040506228_ApplicationScore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905042131339_CheckIn.resx">
+      <DependentUpon>201905042131339_CheckIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905042143351_CheckIn1.resx">
+      <DependentUpon>201905042143351_CheckIn1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905042230150_Change_Dorm_PrimaryKey_To_string.resx">
+      <DependentUpon>201905042230150_Change_Dorm_PrimaryKey_To_string.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

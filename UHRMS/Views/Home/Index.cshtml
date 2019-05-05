@@ -1,18 +1,233 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
-
-<div class="jumbotron">
-
-
-    <h1>
-         
-    </h1>
-    <p class="lead">UTech Ja accommodation management system for Current and Potential Boarding Students can apply and review their rooms to be lived in on campus.  !!!!</p>
-    <p>
-
-
-        <img src="~/Images/1748084693_f99d6a8d-ffe9-4b9d-93d6-b1b72d7f95ce.png" />
-
-    </p>
+<div class="row" style="border-color:#1b1b3a; border-style:solid double; border-width:thick; border-left:white; border-right:white">
+    <div style="margin-left:100px;">
+        <div class="col-md-6">
+            <img style="float:right;width:100px; height:100px;" src="~/Images/Utech_logo.jpg">
+        </div>
+        <div class="col-md-6">
+            <br />
+            <p style="float:left;font-family:'Times New Roman', Times, serif; font-size:20px;color:#1b1b3a;">University of Technology,Jamaica</p>
+            <br />
+            <br />
+            <p style="font-family:'Times New Roman', Times, serif;font-size:18px;"><i>Excellence through Knowledge</i></p>
+        </div>
+    </div>
 </div>
+<div class="slider col-lg-12 " style="max-width:100%">
+    <img class="mySlides img-responsive" src="~/Images/halle.jpg" style="width:100%;height:600px; display:flex;">
+
+    <img class="mySlides img-responsive" src="~/Images/farq.jpg" style="width:100%;height:600px; display:flex; ">
+
+
+    <img class="mySlides img-responsive" src="~/Images/falcon.jpg" style="width:100%;height:600px; display:flex; ">
+
+    <img class="mySlides img-responsive" src="~/Images/Garvey.jpg" style="width:100%;height:600px; display:flex; ">
+
+
+</div>
+
+
+
+<div class=" container body-content">
+
+    <div class="col-md-12" style="background-color:white;">
+        <center><h1 style="color:#29335c;">Halls of Residence</h1></center>
+        <div class="col-md-8">
+            <p>
+                Welcome to the University of Technology, Jamaica (UTech, Ja.), and its Halls of Residence.
+                <br />
+                The objective of the Halls of Residence is to establish and maintain a holistic environment for living, learning and development that contributes to students' self-actualization and their ability to make a positive impact on the wider community.
+                <br />
+                There are 476 residential places at UTech, Jamaica, 266 for female students and 210 for male students. These residential places are provided through seven halls: Dennis Johnson, Farquharson, Garvey, and Halls, 'A', 'B', 'E' and 'F' which make up "The Lome Halls". A Resident Manager, who is a member of the University staff, manages each hall, along with a Student Executive Committee headed by a Resident Assistant.
+                <br />
+                The Accommodation Officer has the overall management and administrative responsibility for the Halls of Residence.
+            </p>
+        </div>
+
+        <div class="col-md-4">
+            <img src="~/Images/accom.jpg" style="width:500px;height:300px;">
+            <br />
+            <br />
+        </div>
+
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <img src="~/Images/hall.png" style="width:100%;height:600px;">
+
+</div>
+
+<div class="container-fluid" id="bill">
+    <center><h1> Roommate Bill of Rights</h1></center>
+    <p style="margin-left:30px;">
+
+        The right to read and study free from interference in one's room. Unreasonable noise and other distractions inhibit the exercise of this right.
+        <br />
+        The right to sleep without disturbance from noise, guests, roommates, etc.
+        <br />
+        The right to have one's personal belongings treated with respect by roommates and guests.
+        <br />
+        The right to live in a clean environment.
+        <br />
+        The right to free access to one's room and facilities without pressure from a roommate.
+        <br />
+        The right to personal privacy.
+        <br />
+        The right to host guests with the expectation that they are to respect the rights of your roommate and other Hall residents.
+        <br />
+        The right to discuss grievances. Resident Managers are available for settling conflicts if necessary.
+        <br />
+        The right to be free from intimidation, physical and/or emotional harm.
+    </p>
+    <br />
+    <br />
+    <br />
+</div>
+
+
+
+
+<div class="container-fluid">
+
+
+    <div class="col-md-3">
+        <h3> Garvey Hall</h3>
+        <p>
+            <img src="~/Images/amylogo.jpg" style="width:200px;height:200px;">
+        </p>
+        <p><a class="btn btn-success" href="/Home/Garvey">Apply here &raquo;</a></p>
+
+    </div>
+
+    <div class="col-md-3">
+        <h3>Farquharson Hall</h3>
+        <p> <img src="~/Images/farqlogo.jpg" style="width:200px;height:200px;"></p>
+        <p><a class="btn btn-success" href="/Home/Farquharson">Apply here &raquo;</a></p>
+    </div>
+
+    <div class="col-md-3">
+        <h3> Hall A</h3>
+        <p> <img src="~/Images/halla.png" style="width:200px;height:200px;"></p>
+        <p><a class="btn btn-success" href="/Home/Lome">Apply here &raquo;</a></p>
+    </div>
+
+    <div class="col-md-3">
+        <h3> Hall B</h3>
+        <p> <img src="~/Images/hallb.png" style="width:200px;height:200px;"></p>
+        <p><a class="btn btn-success" href="/Home/Lome">Apply here &raquo;</a></p>
+    </div>
+
+    <div class="col-md-4">
+        <h3> Hall E</h3>
+        <p> <img src="~/Images/hallelogo.png" style="width:200px;height:200px;"></p>
+        <p><a class="btn  btn-success" href="/Home/Lome">Apply here &raquo;</a></p>
+    </div>
+
+    <div class="col-md-4">
+        <h3> Falcon</h3>
+        <p> <img src="~/Images/falconlogo.png" style="width:200px;height:200px;"></p>
+        <p><a class="btn  btn-success" href="/Home/Lome">Apply here &raquo;</a></p>
+    </div>
+
+    <div class="col-md-4">
+        <h3>The Spartans</h3>
+        <p> <img src="~/Images/denislogo.png" style="width:200px;height:200px;"></p>
+        <p><a class="btn  btn-success" href="/Home/Denis">Apply here &raquo;</a></p>
+    </div>
+
+</div>
+
+<div class="container-fluid" style="background-color:#e2e4f6">
+    <div class="col-md-6">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3794.175903351534!2d-76.74609118511471!3d18.01703838770417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xbe483695dda08fef!2sUniversity+of+Technology%2C+Jamaica!5e0!3m2!1sen!2sjm!4v1556684277871!5m2!1sen!2sjm" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-6">
+
+
+        <!--Section heading-->
+        <h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
+        <!--Section description-->
+        <p class="text-center w-responsive mx-auto mb-5">
+            Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
+            a matter of hours to help you.
+        </p>
+
+        <div class="row">
+
+            <!--Grid column-->
+            <div class="col-md-12 mb-md-0 mb-5">
+                <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+
+                    <!--Grid row-->
+                    <div class="row">
+
+                        <!--Grid column-->
+                        <div class="col-md-12">
+                            <div class="md-form mb-0">
+                                <center> <input type="text" id="name" name="name" class="form-control"> </center>
+                                <center> <label for="name" class="">Your name</label> </center>
+                            </div>
+                        </div>
+                        <!--Grid column-->
+                        <!--Grid column-->
+                        <div class="col-md12">
+                            <div class="md-form mb-0">
+                                <center> <input type="text" id="email" name="email" class="form-control">  </center>
+                                <center>  <label for="email" class="">Your email</label> </center>
+                            </div>
+                        </div>
+                        <!--Grid column-->
+
+                    </div>
+                    <!--Grid row-->
+                    <!--Grid row-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="md-form mb-0">
+                                <center> <input type="text" id="subject" name="subject" class="form-control form-horizontal"> </center>
+                                <center> <label for="subject" class="">Subject</label> </center>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Grid row-->
+                    <!--Grid row-->
+                    <div class="row">
+
+                        <!--Grid column-->
+                        <div class="col-md-12">
+
+                            <div class="md-form">
+                                <center>  <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea> </center>
+                                <center>  <label for="message">Your message</label> </center>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--Grid row-->
+
+                </form>
+
+                <div class="text-center text-md-left">
+                    <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Send</a>
+
+
+                </div>
+
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+
+
+
+        </div>
+
+    </div>
+</div>
+@Scripts.Render("~/bundles/JavaScript")
+
+

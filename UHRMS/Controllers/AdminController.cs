@@ -49,6 +49,7 @@ namespace UHRMS.Controllers
             var roles = _context.Roles.Select(r => new {
                 RoleName = r.Name
             }).ToList();
+
             ViewBag.Roles = new MultiSelectList(roles, "RoleName", "RoleName");
 
 
